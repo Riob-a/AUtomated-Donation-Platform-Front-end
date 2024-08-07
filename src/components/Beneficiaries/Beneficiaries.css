@@ -1,0 +1,54 @@
+
+
+
+   /* src/components/Beneficiaries.css */
+.beneficiaries-page {
+  text-align: center;
+  padding: 20px;
+  background-color: #f0e1e8;
+}
+
+.beneficiaries-page h1 {
+  font-size: 2.5em;
+  color: #333;
+}
+
+.beneficiaries-page p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.beneficiaries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.beneficiary-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.beneficiary-image-placeholder {
+  width: 100%;
+  height: 150px;
+  background-color: #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.beneficiary-card h2 {
+  font-size: 1.5em;
+  color: #333;
+}
+
+.beneficiary-card p {
+  font-size: 1em;
+  color: #666;
+}
