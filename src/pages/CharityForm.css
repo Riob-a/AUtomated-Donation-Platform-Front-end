@@ -1,0 +1,40 @@
+.form-container {
+  text-align: center;
+  font-size: xx-large;
+  margin-top: 50px;
+}
+
+.charity-form {
+  display: inline-block;
+  background-color: #d8bfd8;
+  min-height: 500px;
+  width: 500px;
+  padding: 40px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.charity-form input,
+.charity-form textarea {
+  display: block;
+  width: 450px;
+  margin: 20px auto;
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.charity-form button {
+  width: 500px;
+  background-color: black;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.charity-form button:hover {
+  background-color: #333;
+}
