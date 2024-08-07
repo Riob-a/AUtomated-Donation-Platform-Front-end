@@ -5,7 +5,7 @@ function AdminApplications() {
   const [applications, setApplications] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/charities")
+    fetch("http://127.0.0.1:5000/applications")  // Updated URL
       .then((response) => response.json())
       .then((data) => setApplications(data))
       .catch((error) => console.error("Error fetching applications:", error));
@@ -45,7 +45,7 @@ function AdminApplications() {
                   <h5 className="card-title">{app.name}</h5>
                   <p className="card-text">{app.description}</p>
                   <p className="card-text">
-                    <small className="text-body-secondary">Last updated {new Date(app.updated_at).toLocaleString()}</small>
+                    <small className="text-body-secondary">Last updated {new Date(app.date_submitted).toLocaleString()}</small>
                   </p>
                   <button className="btn btn-primary">Approve</button>
                 </div>
