@@ -12,9 +12,9 @@ function AdminApplications() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-dark">
       <div>
-        <div className="row p-1 rounde">
+        <div className="row p-1 rounded">
           <div className="col">
             <div className="header-component">
               <h1>ADMIN</h1>
@@ -25,11 +25,11 @@ function AdminApplications() {
       </div>
 
       <div className="container-fluid p-4 m-2">
-        <h5 className="header-1"><b>Pending</b></h5>
-        <h3 className="header-2">Applications</h3>
+        <h5 className="text-light bg-dark"><b>Pending</b></h5>
+        <h3 className="text-light bg-dark">Applications</h3>
 
         {applications.map((app) => (
-          <div key={app.id} className="card mb-3 p-4 shadow p-3 mb-5 bg-body-tertiary rounded">
+          <div key={app.id} className="card bg-secondary mb-3 p-4 shadow p-3 mb-5 rounded">
             <div className="row g-0">
               <div className="col-md-4">
                 <img
@@ -42,12 +42,12 @@ function AdminApplications() {
               </div>
               <div className="col-md-8">
                 <div className="card-body">
-                  <h5 className="card-title">{app.name}</h5>
-                  <p className="card-text">{app.description}</p>
+                  <h5 className="card-title text-light">{app.name}</h5>
+                  <p className="card-text text-light">{app.description}</p>
                   <p className="card-text">
                     <small className="text-body-secondary">Last updated {new Date(app.date_submitted).toLocaleString()}</small>
                   </p>
-                  <button className="btn btn-primary">Approve</button>
+                  <button className="btn btn-dark">Approve</button>
                 </div>
               </div>
             </div>

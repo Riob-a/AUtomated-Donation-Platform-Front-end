@@ -29,15 +29,15 @@ function AdminCharities() {
   };
 
   return (
-    <div>
-      <div className="container-fluid p-4 m-2">
-        <div className="container-fluid p-1 shadow p-3 mb-5 bg-body- rounded">
-          <h5 className="header-1"><b>Manage</b></h5>
-          <h3 className="header-2">The following</h3>
+    <div className="bg-dark">
+      <div className="container-fluid p-4  bg-dark">
+        <div className="card  text-bg-dark border-warning p-3 shadow p-3 mb-5  rounded">
+          <h5 className="text-light "><b>Track</b></h5>
+          <h3 className="text-light">The following</h3>
         </div>
 
         {charities.map((charity) => (
-          <div key={charity.id} className="card mb-3 p-4 shadow p-3 mb-5 bg-body-tertiary rounded">
+          <div key={charity.id} className="card  bg-secondary mb-3 p-4 shadow p-3 mb-5 rounded">
             <div className="row g-0">
               <div className="col-md-4">
                 {charity.image_url ? (
@@ -51,10 +51,10 @@ function AdminCharities() {
                 )}
               </div>
               <div className="col-md-8">
-                <div className="card-body">
-                  <h5 className="card-title">{charity.name}</h5>
-                  <p className="card-text">{charity.description}</p>
-                  {/* <p className="card-text"><small className="text-body-secondary">Last updated {new Date(charity.updated_at).toLocaleString()}</small></p> */}
+                <div className="card-body text-light">
+                  <h5 className="card-title text-light">{charity.name}</h5>
+                  <p className="card-text ">{charity.description}</p>
+                  <br></br>
                   <button onClick={() => handleDelete(charity.id)} className="btn btn-danger">Delete</button>
                 </div>
               </div>

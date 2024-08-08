@@ -1,19 +1,19 @@
-.header-component{
-  background-image: url('https://images.pexels.com/photos/430207/pexels-photo-430207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+.homepage-component{
+  /* background-image: url('https://i.pinimg.com/originals/d8/ae/07/d8ae07083b5ef20906ea7d66139bca9d.jpg'); */
   background-size: cover;
-  background-repeat: no-repeat;
-  height: 500px;
+  background-repeat: round;
+  height: 900px;
   width: 100%;
 }
 
-.header-component h1{
+.homepage-component h1{
   display: flex;
   justify-content: center;
-  padding-top: 200px;
+  padding-top: 450px;
   color: rgb(249, 246, 236);
   font-weight: 400;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 5.5rem;
+  font-size: 4.5rem;
   text-shadow: 
     1px 1px 2px rgba(0, 0, 0, 0.7), 
     2px 2px 5px rgba(0, 0, 0, 0.5), 
@@ -51,5 +51,9 @@
   color: rgb(79, 78, 75);
   font-weight: 400;
   font-size: 1.0rem;
+}
+
+body{
+  background-color: rgb(20, 19, 19)
 }
 

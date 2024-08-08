@@ -8,12 +8,12 @@ function Footer(){
         <div class="container"> 
             <div class="row"> 
                 <div class="col-md-3"> 
-                    <h2>Fan Girls</h2> 
+                    <h2>Fund.<i>Girls</i></h2> 
                 </div> 
                 <div class="col-md-3"> 
                     <h5>About Us</h5> 
                     <p> 
-                        Fan Girls is a leading platform that provides 
+                        Fund.Girls is a leading platform that provides 
                         Charities and Donors resources for hosting charities and 
                         making their Donations 
                         . 
@@ -53,7 +53,7 @@ function Footer(){
                     </ul> 
                 </div> 
             </div> 
-            {/* <hr>  */}
+            <hr/> 
             <div class="row"> 
                 <div class="col-md-6"> 
                     <p>© 2024 Fan Girls. All rights reserved.</p> 
