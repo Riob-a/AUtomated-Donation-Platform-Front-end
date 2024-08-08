@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home"
 import Charities from "./pages/Charities/Charities"
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CharityApplicationForm from "./pages/Charities/CharityApplicationForm";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/applications" element={<AdminApplications />} />
         <Route path="/beneficiaries" element={<Beneficiaries />} />
         <Route path="/charities" element={<Charities />} />
+        <Route path="/charities_form" element={<CharityApplicationForm />} />
       </Routes>
       <Footer />
     </Router>

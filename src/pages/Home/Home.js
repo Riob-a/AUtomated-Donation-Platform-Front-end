@@ -33,7 +33,7 @@ function Home() {
               <h5 className="card-title">Charities</h5>
               <p className="card-text">Click the button below to register a charity</p>
               <br></br>
-              <Link to="/" className="btn btn-dark">Create charity</Link>
+              <Link to="/charities_form" className="btn btn-dark">Create charity</Link>
             </div>
           </div>
         </div>
