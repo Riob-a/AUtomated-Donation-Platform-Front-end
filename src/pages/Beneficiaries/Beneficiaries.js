@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import './Beneficiaries.css';
 
 const Beneficiaries = () => {
   const [beneficiaries, setBeneficiaries] = useState([]);
@@ -11,18 +10,21 @@ const Beneficiaries = () => {
       .catch(error => console.error('Error fetching beneficiaries:', error));
   }, []);
 
-  
-
   return (
     <div className="bg-dark">
-      <h1 className='text-light'>Beneficiaries</h1>
-      <p>Beneficiaries of your Kindness</p>
-      <div className="beneficiaries-grid">
-        {beneficiaries.map(beneficiary => (
-          <div key={beneficiary.id} className="beneficiary-card">
-            <div className="beneficiary-image-placeholder"></div>
-            <h2>{beneficiary.name}</h2>
-            <p>{beneficiary.story}</p>
+
+      <div className='card m-2 p-2 bg-dark border-warning p-3 shadow p-3 mb-5  rounded'>
+      <h5 className='card-title text-light'>The Beneficiaries of your kindness</h5>
+      </div>
+
+      <div className='container p-4'>
+        {beneficiaries.map((beneficiary) => (
+          <div key={beneficiary.id} className='card mb-3 bg-secondary'>
+            <img src={beneficiary.imageUrl} className='card-img-top' alt={beneficiary.name} />
+            <div className='card-body'>
+              <h5 className='card-title'>{beneficiary.name}</h5>
+              <p className='card-text'>{beneficiary.story}</p>
+            </div>
           </div>
         ))}
       </div>

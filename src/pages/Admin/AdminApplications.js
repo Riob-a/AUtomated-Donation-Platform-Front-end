@@ -5,14 +5,56 @@ function AdminApplications() {
   const [applications, setApplications] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/applications")  // Updated URL
+    fetch("http://127.0.0.1:5000/applications")
       .then((response) => response.json())
       .then((data) => setApplications(data))
       .catch((error) => console.error("Error fetching applications:", error));
   }, []);
 
+  const handleApprove = (id) => {
+    fetch(`http://127.0.0.1:5000/applications/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "Approved" }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setApplications((prevApplications) =>
+            prevApplications.map((app) =>
+              app.id === id ? { ...app, status: "Approved" } : app
+            )
+          );
+          alert("Application has been approved!");
+        }
+      })
+      .catch((error) => console.error("Error approving application:", error));
+  };
+
+  const handleReject = (id) => {
+    fetch(`http://127.0.0.1:5000/applications/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ status: "Rejected" }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          setApplications((prevApplications) =>
+            prevApplications.map((app) =>
+              app.id === id ? { ...app, status: "Rejected" } : app
+            )
+          );
+          alert("Application has been rejected!");
+        }
+      })
+      .catch((error) => console.error("Error rejecting application:", error));
+  };
+
   return (
-    <div className="bg-dark">
+    <div className="bg-dark p-4">
       <div>
         <div className="row p-1 rounded">
           <div className="col">
@@ -47,13 +89,17 @@ function AdminApplications() {
                   <p className="card-text">
                     <small className="text-body-secondary">Last updated {new Date(app.date_submitted).toLocaleString()}</small>
                   </p>
-                  <button className="btn btn-dark">Approve</button>
+                  <button className="btn btn-dark" onClick={() => handleApprove(app.id)}>
+                    Approve
+                  </button>
+                  <button className="btn btn-dark m-4" onClick={() => handleReject(app.id)}>
+                    Reject
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         ))}
-
       </div>
     </div>
   );
