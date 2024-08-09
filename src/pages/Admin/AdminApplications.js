@@ -5,7 +5,7 @@ function AdminApplications() {
   const [applications, setApplications] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/applications")
+    fetch("http://127.0.0.1:5000/unapproved-charities")
       .then((response) => response.json())
       .then((data) => setApplications(data))
       .catch((error) => console.error("Error fetching applications:", error));
@@ -51,6 +51,27 @@ function AdminApplications() {
         }
       })
       .catch((error) => console.error("Error rejecting application:", error));
+  };
+
+  const handleMoveCharities = () => {
+    fetch("http://127.0.0.1:5000/move-unapproved-charities", {
+      method: "POST",
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Failed to move unapproved charities');
+        }
+      })
+      .then((data) => {
+        alert(data.message);  // Display success message
+        // Optionally refresh applications data here
+      })
+      .catch((error) => {
+        console.error("Error moving charities:", error);
+        alert("Failed to move unapproved charities. Please try again.");
+      });
   };
 
   return (
@@ -100,6 +121,10 @@ function AdminApplications() {
             </div>
           </div>
         ))}
+
+        <button className="btn btn-secondary mt-4" onClick={handleMoveCharities}>
+          Move Unapproved Charities
+        </button>
       </div>
     </div>
   );
