@@ -34,8 +34,8 @@ function CharityApplicationForm() {
       })
       .then(data => {
         console.log('Charity created:', data);
-        alert("Charity submitted successfully!");  // Popup on successful submission
-        setFormData({ name: "", description: "", website: "", image_url: "" });  // Reset form
+        alert("Charity submitted successfully!");
+        setFormData({ name: "", description: "", website: "", image_url: "" });
       })
       .catch(error => {
         console.error('Error:', error);
@@ -45,12 +45,13 @@ function CharityApplicationForm() {
 
   return (
     <div className="container p-4">
-      <div className="container p-4 m-3 bg-dark text-light">Add Your Charity's Details</div>
+      <div className="container p-4 m-3 bg-dark text-light text-center rounded"><h1 className="">Charity Application Form</h1></div>
 
-      <div className="container p-4 m-3 bg-secondary rounded">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">Name</label>
+      <div className="container  p-4 col-8  rounded">
+        <form className="bg-secondary  col-8 p-4 m-3 rounded" onSubmit={handleSubmit}>
+          <h3 className="text-center"><b>Add your details</b></h3>
+          <div className="col-12 mb-3">
+            <label htmlFor="name" className="form-label"><b>Name</b></label>
             <input 
               type="text" 
               className="form-control form-control-sm" 
@@ -61,8 +62,8 @@ function CharityApplicationForm() {
               onChange={handleChange} 
             />
           </div>
-          <div className="mb-3">
-            <label htmlFor="description" className="form-label">Description</label>
+          <div className=" col-12 mb-3">
+            <label htmlFor="description" className="form-label"><b>Description</b></label>
             <input 
               type="text" 
               className="form-control form-control-sm" 
@@ -73,8 +74,8 @@ function CharityApplicationForm() {
               onChange={handleChange} 
             />
           </div>
-          <div className="mb-3">
-            <label htmlFor="website" className="form-label">Website</label>
+          <div className=" col-12 mb-3">
+            <label htmlFor="website" className="form-label"><b>Website</b></label>
             <input 
               type="text" 
               className="form-control form-control-sm" 
@@ -85,8 +86,8 @@ function CharityApplicationForm() {
               onChange={handleChange} 
             />
           </div>
-          <div className="mb-3">
-            <label htmlFor="image_url" className="form-label">Image URL</label>
+          <div className="col-12 mb-3">
+            <label htmlFor="image_url" className="form-label"><b>Image URL</b></label>
             <input 
               type="text" 
               className="form-control form-control-sm" 
