@@ -5,6 +5,7 @@ import AdminApplications from "./pages/Admin/AdminApplications";
 import AdminCharities from "./pages/Admin/AdminCharities";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import Beneficiaries from "./pages/Beneficiaries/Beneficiaries";
+import BeneficiariesForm from "./pages/Beneficiaries/BeneficiariesForm";
 import Home from "./pages/Home/Home"
 import Charities from "./pages/Charities/Charities"
 import Navbar from './components/Navbar';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/beneficiaries" element={<Beneficiaries />} />
         <Route path="/charities" element={<Charities />} />
         <Route path="/charities_form" element={<CharityApplicationForm />} />
+        <Route path="/beneficiaries_form" element={<BeneficiariesForm />} />
       </Routes>
       <Footer />
     </Router>

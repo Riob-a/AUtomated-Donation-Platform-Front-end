@@ -1,6 +1,4 @@
 import React from "react";
-// import './Navbar.css';
-import { NavLink } from 'react-router-dom';
 
 
 function Navbar(){
@@ -21,6 +19,9 @@ function Navbar(){
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/beneficiaries">Beneficiaries</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/beneficiaries_form">Add Beneficiaries</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/admin_dashboard">Admin</a>
