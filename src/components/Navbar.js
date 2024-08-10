@@ -21,9 +21,6 @@ function Navbar(){
               <a class="nav-link" href="/beneficiaries">Beneficiaries</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/beneficiaries_form">Add Beneficiaries</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/admin_dashboard">Admin</a>
             </li>
             <li class="nav-item">

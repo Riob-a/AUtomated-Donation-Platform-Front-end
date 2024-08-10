@@ -104,7 +104,7 @@ function BeneficiariesForm() {
               onChange={handleChange}
               required
             >
-              <option value="">Select a charity</option>
+              <option value="">Select your charity</option>
               {charities.map((charity) => (
                 <option key={charity.id} value={charity.id}>
                   {charity.name}
