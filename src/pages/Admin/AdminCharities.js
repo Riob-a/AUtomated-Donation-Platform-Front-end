@@ -30,8 +30,8 @@ function AdminCharities() {
 
   return (
     <div className="bg-dark">
-      <div className="container-fluid p-4  bg-dark">
-        <div className="card  text-bg-dark border-warning p-3 shadow p-3 mb-5  rounded">
+      <div className="container p-4  bg-dark">
+        <div className="card  text-bg-dark border-w p-3 shadow p-3 mb-5  rounded">
           <h5 className="text-light "><b>Track</b></h5>
           <h3 className="text-light">The following</h3>
         </div>

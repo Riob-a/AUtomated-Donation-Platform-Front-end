@@ -67,11 +67,11 @@ const Charities = () => {
         </div>
       </div>
 
-      <div className="container p-2 text-center">
-        <div className="card text-bg-dark border-warning p-3 shadow p-3 mb-5 rounded">
-          <h6 className="text-center text-light bg-dark">
+      <div className="container p-4 text-center">
+        <div className="card text-bg-dark  p-3 shadow p-3 mb-5 rounded">
+          <h1 className="text-center text-light bg-dark">
             <b>Donate with the Kindness of your Heart</b>
-          </h6>
+          </h1>
         </div>
 
         {/* Search bar */}
@@ -80,14 +80,14 @@ const Charities = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search charities..."
-          className="form-control mb-4"
+          className="form-control mb-4 border-dark"
         />
 
         <div className="row row-cols-1 row-cols-md-2 g-4">
           {filteredCharities.map((charity) => (
             <div className="col" key={charity.id}>
               <div className="card w-75 text-bg-secondary">
-                <img src={charity.image_url} className="card-img-top" alt={charity.name} />
+                <img src={charity.image_url} className="card-img-top bg-dark p-4" alt={charity.name} />
                 <div className="card-body">
                   <h5 className="card-title">{charity.name}</h5>
                   <p className="card-text">{charity.description}</p>

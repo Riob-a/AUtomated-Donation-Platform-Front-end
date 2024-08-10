@@ -26,7 +26,7 @@ function AdminApplications() {
               app.id === id ? { ...app, status: "Approved" } : app
             )
           );
-          alert("Application has been approved!");
+          alert("Added to approval list!");
         }
       })
       .catch((error) => console.error("Error approving application:", error));
@@ -66,11 +66,11 @@ function AdminApplications() {
       })
       .then((data) => {
         alert(data.message);  // Display success message
-        // Optionally refresh applications data here
+        window.location.reload(); 
       })
       .catch((error) => {
         console.error("Error moving charities:", error);
-        alert("Failed to move unapproved charities. Please try again.");
+        alert("Failed to move approved charities. Please try again.");
       });
   };
 
@@ -111,7 +111,7 @@ function AdminApplications() {
                     <small className="text-body-secondary">Last updated {new Date(app.date_submitted).toLocaleString()}</small>
                   </p>
                   <button className="btn btn-dark" onClick={() => handleApprove(app.id)}>
-                    Approve
+                    Add to approval list
                   </button>
                   <button className="btn btn-dark m-4" onClick={() => handleReject(app.id)}>
                     Reject
@@ -123,7 +123,7 @@ function AdminApplications() {
         ))}
 
         <button className="btn btn-secondary mt-4" onClick={handleMoveCharities}>
-          Move Unapproved Charities
+          Approve Charities
         </button>
       </div>
     </div>
