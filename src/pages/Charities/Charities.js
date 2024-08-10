@@ -5,6 +5,8 @@ const Charities = () => {
   const [donationAmounts, setDonationAmounts] = useState({});
   const [donationError, setDonationError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4; // Number of charities per page
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/charities")
@@ -34,7 +36,7 @@ const Charities = () => {
 
       alert("Donation successful!");
       setDonationAmounts((prevState) => ({ ...prevState, [charityId]: "" }));
-      
+
       // Refresh charity list to update total donations
       fetch("http://127.0.0.1:5000/charities")
         .then((response) => response.json())
@@ -57,6 +59,25 @@ const Charities = () => {
     charity.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Pagination logic
+  const indexOfLastCharity = currentPage * itemsPerPage;
+  const indexOfFirstCharity = indexOfLastCharity - itemsPerPage;
+  const currentCharities = filteredCharities.slice(indexOfFirstCharity, indexOfLastCharity);
+
+  const totalPages = Math.ceil(filteredCharities.length / itemsPerPage);
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
   return (
     <div className="bg-dark p-4">
       <div className="row p-1 rounded">
@@ -68,7 +89,7 @@ const Charities = () => {
       </div>
 
       <div className="container p-4 text-center">
-        <div className="card text-bg-dark  p-3 shadow p-3 mb-5 rounded">
+        <div className="card text-bg-dark p-3 shadow p-3 mb-5 rounded">
           <h1 className="text-center text-light bg-dark">
             <b>Donate with the Kindness of your Heart</b>
           </h1>
@@ -84,7 +105,7 @@ const Charities = () => {
         />
 
         <div className="row row-cols-1 row-cols-md-2 g-4">
-          {filteredCharities.map((charity) => (
+          {currentCharities.map((charity) => (
             <div className="col" key={charity.id}>
               <div className="card w-75 text-bg-secondary">
                 <img src={charity.image_url} className="card-img-top bg-dark p-4" alt={charity.name} />
@@ -112,6 +133,25 @@ const Charities = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Pagination controls */}
+        <div className="pagination-controls mt-4">
+          <button
+            className="btn btn-secondary"
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className="mx-2 text-light">{currentPage} of {totalPages}</span>
+          <button
+            className="btn btn-secondary"
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>
