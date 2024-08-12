@@ -8,7 +8,7 @@ function AdminCharities() {
 
   useEffect(() => {
     // Fetch charities from the backend
-    fetch("http://localhost:5000/charities")
+    fetch("https://automated-donation-platform-back-end.onrender.com/charities")
       .then((response) => response.json())
       .then((data) => setCharities(data))
       .catch((error) => console.error("Error fetching charities:", error));
@@ -16,7 +16,7 @@ function AdminCharities() {
 
   const handleDelete = (id) => {
     // Send DELETE request to the backend
-    fetch(`http://localhost:5000/charities/${id}`, {
+    fetch(`https://automated-donation-platform-back-end.onrender.com/charities/${id}`, {
       method: "DELETE",
     })
       .then((response) => {

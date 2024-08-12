@@ -4,7 +4,7 @@ const Beneficiaries = () => {
   const [beneficiaries, setBeneficiaries] = useState([]);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/beneficiaries')
+    fetch('https://automated-donation-platform-back-end.onrender.com/beneficiaries')
       .then(response => response.json())
       .then(data => setBeneficiaries(data))
       .catch(error => console.error('Error fetching beneficiaries:', error));

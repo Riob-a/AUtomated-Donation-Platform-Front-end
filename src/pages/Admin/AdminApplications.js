@@ -5,14 +5,14 @@ function AdminApplications() {
   const [applications, setApplications] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/unapproved-charities")
+    fetch("https://automated-donation-platform-back-end.onrender.com/unapproved-charities")
       .then((response) => response.json())
       .then((data) => setApplications(data))
       .catch((error) => console.error("Error fetching applications:", error));
   }, []);
 
   const handleApprove = (id) => {
-    fetch(`http://127.0.0.1:5000/applications/${id}`, {
+    fetch(`https://automated-donation-platform-back-end.onrender.com/applications/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +33,7 @@ function AdminApplications() {
   };
 
   const handleReject = (id) => {
-    fetch(`http://127.0.0.1:5000/applications/${id}`, {
+    fetch(`https://automated-donation-platform-back-end.onrender.com/applications/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,7 @@ function AdminApplications() {
   };
 
   const handleMoveCharities = () => {
-    fetch("http://127.0.0.1:5000/move-unapproved-charities", {
+    fetch("https://automated-donation-platform-back-end.onrender.com/move-unapproved-charities", {
       method: "POST",
     })
       .then((response) => {

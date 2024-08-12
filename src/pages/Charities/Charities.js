@@ -9,7 +9,7 @@ const Charities = () => {
   const itemsPerPage = 4; // Number of charities per page
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/charities")
+    fetch("https://automated-donation-platform-back-end.onrender.com/charities")
       .then((response) => response.json())
       .then((data) => setCharities(data))
       .catch((error) => console.error("Error fetching charities:", error));
@@ -19,7 +19,7 @@ const Charities = () => {
     const amount = donationAmounts[charityId] || "";
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/donations", {
+      const response = await fetch("https://automated-donation-platform-back-end.onrender.com/donations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const Charities = () => {
       setDonationAmounts((prevState) => ({ ...prevState, [charityId]: "" }));
 
       // Refresh charity list to update total donations
-      fetch("http://127.0.0.1:5000/charities")
+      fetch("https://automated-donation-platform-back-end.onrender.com/charities")
         .then((response) => response.json())
         .then((data) => setCharities(data))
         .catch((error) => console.error("Error fetching charities:", error));

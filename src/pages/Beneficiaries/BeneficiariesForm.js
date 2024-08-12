@@ -12,7 +12,7 @@ function BeneficiariesForm() {
 
   // Fetch the list of charities when the component mounts
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/charities')
+    fetch('https://automated-donation-platform-back-end.onrender.com/charities')
       .then(response => response.json())
       .then(data => setCharities(data))
       .catch(error => console.error('Error fetching charities:', error));
@@ -28,7 +28,7 @@ function BeneficiariesForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://127.0.0.1:5000/beneficiaries', {
+    fetch('https://automated-donation-platform-back-end.onrender.com/beneficiaries', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
