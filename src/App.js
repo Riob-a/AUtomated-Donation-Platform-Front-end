@@ -10,6 +10,8 @@ import Charities from "./pages/Charities/Charities"
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CharityApplicationForm from "./pages/Charities/CharityApplicationForm";
+import SignUpForm from "./pages/Home/SignUpForm";
+import LoginForm from "./pages/Home/LoginForm";
 
 
 function App() {
@@ -24,6 +26,9 @@ function App() {
         <Route path="/beneficiaries" element={<Beneficiaries />} />
         <Route path="/charities" element={<Charities />} />
         <Route path="/charities_form" element={<CharityApplicationForm />} />
+        <Route path="/SignUpForm" element={<SignUpForm />} />
+        <Route path="/LoginForm" element={<LoginForm />} />
+
       </Routes>
       <Footer />
     </Router>
