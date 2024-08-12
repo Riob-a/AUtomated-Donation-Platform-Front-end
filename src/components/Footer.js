@@ -22,9 +22,9 @@ function Footer(){
                 <div class="col-md-3"> 
                     <h5>Contact Us</h5> 
                     <ul class="list-unstyled"> 
-                        <li>Email: info@example.com</li> 
+                        <li>Email: info@girls.com</li> 
                         <li>Phone: +1233567890</li> 
-                        <li>Address: 123 Street, City, Country</li> 
+                        <li>Address: 123 Street, Nairobi, Kenya</li> 
                     </ul> 
                 </div> 
                 <div class="col-md-3"> 
@@ -52,11 +52,13 @@ function Footer(){
                         </li> 
                     </ul> 
                 </div> 
-            </div> 
-            <hr/> 
+            </div>
+
+            <hr/>
+             
             <div class="row"> 
                 <div class="col-md-6"> 
-                    <p>© 2024 Fan Girls. All rights reserved.</p> 
+                    <p>© 2024 Fund.<i>Girls</i>. All rights reserved.</p> 
                 </div> 
                 <div class="col-md-6 text-end"> 
                     <ul class="list-inline footer-links"> 
@@ -70,11 +72,11 @@ function Footer(){
                                 Terms of Service 
                             </a> 
                         </li> 
-                        <li class="list-inline-item"> 
+                        {/* <li class="list-inline-item"> 
                             <a href="#" class="text-white"> 
                                 Sitemap 
                             </a> 
-                        </li> 
+                        </li>  */}
                     </ul> 
                 </div> 
             </div> 

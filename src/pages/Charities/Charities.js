@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; 
+
 
 const Charities = () => {
   const [charities, setCharities] = useState([]);
@@ -7,6 +9,8 @@ const Charities = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4; // Number of charities per page
+  const navigate = useNavigate(); // Initialize navigate
+
 
 //Fetch Charities
   useEffect(() => {
@@ -155,6 +159,10 @@ const Charities = () => {
           >
             Next
           </button>
+          {/* Back Button */}
+        <button className="btn btn-light  float-end" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
         </div>
       </div>
     </div>

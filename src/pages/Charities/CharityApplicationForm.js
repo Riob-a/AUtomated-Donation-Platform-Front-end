@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
+
 
 function CharityApplicationForm() {
+  const navigate = useNavigate(); // Initialize navigate
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -102,6 +105,10 @@ function CharityApplicationForm() {
           </div>
           <button type="submit" className="btn btn-dark btn-sm">Submit</button>
         </form>
+        {/* Back Button */}
+        <button className="btn btn-light  float-end" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
       </div>
     </div>
   );

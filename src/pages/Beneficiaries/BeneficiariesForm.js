@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; 
+
 
 function BeneficiariesForm() {
+  const navigate = useNavigate(); // Initialize navigate
   const [formData, setFormData] = useState({
     name: "",
     story: "",
@@ -114,6 +117,8 @@ function BeneficiariesForm() {
             </select>
           </div>
           <button type="submit" className="btn btn-dark btn-sm">Submit</button>
+          {/* Back Button */}
+          <button className="btn btn-light  float-end" onClick={() => navigate(-1)}>Go Back</button>
         </form>
       </div>
     </div>

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; 
+
 import "./Admin.css";
 
 function AdminCharities() {
   const [charities, setCharities] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5; // Number of charities per page
+  const navigate = useNavigate(); // Initialize navigate
 
   useEffect(() => {
     // Fetch charities from the backend
@@ -117,7 +120,13 @@ function AdminCharities() {
           >
             Next
           </button>
+
+        {/* Back Button */}
+        <button className="btn btn-light  float-end" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
         </div>
+        
       </div>
     </div>
   );

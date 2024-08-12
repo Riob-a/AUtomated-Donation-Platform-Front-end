@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; 
 import "./Admin.css";
 
 function AdminApplications() {
   const [applications, setApplications] = useState([]);
+  const navigate = useNavigate(); // Initialize navigate
 
-//Fetch Applications
+  // Fetch Applications
   useEffect(() => {
     fetch("https://automated-donation-platform-back-end.onrender.com/unapproved-charities")
       .then((response) => response.json())
@@ -12,7 +14,7 @@ function AdminApplications() {
       .catch((error) => console.error("Error fetching applications:", error));
   }, []);
 
-//Handle approval
+  // Handle approval
   const handleApprove = (id) => {
     fetch(`https://automated-donation-platform-back-end.onrender.com/applications/${id}`, {
       method: "PATCH",
@@ -34,7 +36,7 @@ function AdminApplications() {
       .catch((error) => console.error("Error approving application:", error));
   };
 
-//Rejection Logic
+  // Rejection Logic
   const handleReject = (id) => {
     fetch(`https://automated-donation-platform-back-end.onrender.com/applications/${id}`, {
       method: "PATCH",
@@ -46,16 +48,15 @@ function AdminApplications() {
       .then((response) => {
         if (response.ok) {
           setApplications((prevApplications) =>
-            prevApplications.map((app) =>
-              app.id === id ? { ...app, status: "Rejected" } : app
-            )
+            prevApplications.filter((app) => app.id !== id)
           );
           alert("Application has been rejected!");
         }
       })
       .catch((error) => console.error("Error rejecting application:", error));
   };
-//Move applications to Charities
+
+  // Move applications to Charities
   const handleMoveCharities = () => {
     fetch("https://automated-donation-platform-back-end.onrender.com/move-unapproved-charities", {
       method: "POST",
@@ -76,7 +77,8 @@ function AdminApplications() {
         alert("Failed to move approved charities. Please try again.");
       });
   };
-//Page content
+
+  // Page content
   return (
     <div className="bg-dark p-4">
       <div>
@@ -111,7 +113,7 @@ function AdminApplications() {
                   <h5 className="card-title text-light">{app.name}</h5>
                   <p className="card-text text-light">{app.description}</p>
                   <p className="card-text">
-                    <small className="text-body-secondary">Last updated {new Date(app.date_submitted).toLocaleString()}</small>
+                    <small className="text-body-secondary"><b>Last updated {new Date(app.date_submitted).toLocaleString()}</b></small>
                   </p>
                   <button className="btn btn-dark" onClick={() => handleApprove(app.id)}>
                     Add to approval list
@@ -127,6 +129,11 @@ function AdminApplications() {
 
         <button className="btn btn-secondary mt-4" onClick={handleMoveCharities}>
           Approve Charities
+        </button>
+
+        {/* Back Button */}
+        <button className="btn btn-light mt-4 m-2 float-end" onClick={() => navigate(-1)}>
+          Go Back
         </button>
       </div>
     </div>
