@@ -8,6 +8,7 @@ function CharityApplicationForm() {
     image_url: "",
   });
 
+//Submission logic
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -43,6 +44,7 @@ function CharityApplicationForm() {
       });
   };
 
+//Page Content
   return (
     <div className="container p-4">
       <div className="container p-4 m-3 bg-dark text-light text-center rounded"><h1 className="">Charity Application Form</h1></div>

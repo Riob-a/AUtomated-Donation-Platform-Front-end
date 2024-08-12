@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+//Fetch beneficiaries
 const Beneficiaries = () => {
   const [beneficiaries, setBeneficiaries] = useState([]);
 
@@ -10,6 +11,7 @@ const Beneficiaries = () => {
       .catch(error => console.error('Error fetching beneficiaries:', error));
   }, []);
 
+//Page content
   return (
     <div className="bg-dark">
 

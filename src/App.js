@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.css"; // Ensure you have this for general styles
+import "./App.css";
 import AdminApplications from "./pages/Admin/AdminApplications";
 import AdminCharities from "./pages/Admin/AdminCharities";
 import AdminDashboard from "./pages/Admin/AdminDashboard";

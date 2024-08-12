@@ -8,6 +8,7 @@ const Charities = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4; // Number of charities per page
 
+//Fetch Charities
   useEffect(() => {
     fetch("https://automated-donation-platform-back-end.onrender.com/charities")
       .then((response) => response.json())
@@ -15,6 +16,7 @@ const Charities = () => {
       .catch((error) => console.error("Error fetching charities:", error));
   }, []);
 
+//Posts Donations
   const handleDonate = async (charityId) => {
     const amount = donationAmounts[charityId] || "";
 
@@ -37,7 +39,7 @@ const Charities = () => {
       alert("Donation successful!");
       setDonationAmounts((prevState) => ({ ...prevState, [charityId]: "" }));
 
-      // Refresh charity list to update total donations
+  // Refresh charity list to update total donations
       fetch("https://automated-donation-platform-back-end.onrender.com/charities")
         .then((response) => response.json())
         .then((data) => setCharities(data))
@@ -78,6 +80,7 @@ const Charities = () => {
     }
   };
 
+//Page content
   return (
     <div className="bg-dark p-4">
       <div className="row p-1 rounded">

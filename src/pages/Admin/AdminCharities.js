@@ -48,7 +48,8 @@ function AdminCharities() {
       setCurrentPage(currentPage + 1);
     }
   };
-
+  
+//Page content
   return (
     <div className="bg-dark">
       <div className="container p-4 bg-dark">

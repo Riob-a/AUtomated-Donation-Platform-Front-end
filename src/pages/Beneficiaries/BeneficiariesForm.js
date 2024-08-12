@@ -10,7 +10,7 @@ function BeneficiariesForm() {
 
   const [charities, setCharities] = useState([]);
 
-  // Fetch the list of charities when the component mounts
+  // Fetch the list of charities in the dropdown
   useEffect(() => {
     fetch('https://automated-donation-platform-back-end.onrender.com/charities')
       .then(response => response.json())
@@ -44,7 +44,7 @@ function BeneficiariesForm() {
       })
       .then(data => {
         console.log('Beneficiary created:', data);
-        alert("Beneficiary submitted successfully!");  // Popup on successful submission
+        alert("Beneficiary submitted successfully!");
         setFormData({ name: "", story: "", imageUrl: "", charity_id: "" });  // Reset form
       })
       .catch(error => {
@@ -53,6 +53,7 @@ function BeneficiariesForm() {
       });
   };
 
+  //Page content
   return (
     <div className="container p-4">
       <div className="container p-4 m-3 bg-dark text-light text-center"><h1>Add Beneficiary Details</h1></div>

@@ -4,6 +4,7 @@ import "./Admin.css";
 function AdminApplications() {
   const [applications, setApplications] = useState([]);
 
+//Fetch Applications
   useEffect(() => {
     fetch("https://automated-donation-platform-back-end.onrender.com/unapproved-charities")
       .then((response) => response.json())
@@ -11,6 +12,7 @@ function AdminApplications() {
       .catch((error) => console.error("Error fetching applications:", error));
   }, []);
 
+//Handle approval
   const handleApprove = (id) => {
     fetch(`https://automated-donation-platform-back-end.onrender.com/applications/${id}`, {
       method: "PATCH",
@@ -32,6 +34,7 @@ function AdminApplications() {
       .catch((error) => console.error("Error approving application:", error));
   };
 
+//Rejection Logic
   const handleReject = (id) => {
     fetch(`https://automated-donation-platform-back-end.onrender.com/applications/${id}`, {
       method: "PATCH",
@@ -52,7 +55,7 @@ function AdminApplications() {
       })
       .catch((error) => console.error("Error rejecting application:", error));
   };
-
+//Move applications to Charities
   const handleMoveCharities = () => {
     fetch("https://automated-donation-platform-back-end.onrender.com/move-unapproved-charities", {
       method: "POST",
@@ -73,7 +76,7 @@ function AdminApplications() {
         alert("Failed to move approved charities. Please try again.");
       });
   };
-
+//Page content
   return (
     <div className="bg-dark p-4">
       <div>
