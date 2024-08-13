@@ -11,7 +11,7 @@ import Charities from "./pages/Charities/Charities"
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CharityApplicationForm from "./pages/Charities/CharityApplicationForm";
-import LoginForm from "./pages/Home/LoginForm";
+// import LoginForm from "./pages/Home/LoginForm";
 import SignUpForm from "./pages/Home/SignUpForm";
 
 
