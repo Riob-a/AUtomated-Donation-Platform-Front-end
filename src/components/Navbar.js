@@ -21,10 +21,10 @@ function Navbar(){
               <a className="nav-link" href="/beneficiaries">Beneficiaries</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/admin_dashboard">Admin</a>
+              <a className="nav-link" href="/admin_login">Admin</a>
             </li>
-            <li className="nav-item">
-              {/* <a className="nav-link" href="http://127.0.0.1:5000/logout">Sign out</a> */}
+            <li className="nav-item float-end">
+              <a className="nav-link" href="/sign_up">Sign Up</a>
             </li>
           </ul>
         </div>
