@@ -43,8 +43,13 @@ function SignUpForm() {
                     throw new Error(errorData.msg || 'Error registering user');
                 }
 
+                // Show success alert
                 setAlert({ type: 'success', message: 'User registered successfully!' });
-                navigate('/');
+                // Delay navigation to allow user to see the alert
+                setTimeout(() => {
+                    navigate('/');
+                }, 2000); // 2-second delay
+
                 console.log(await response.json());
             } catch (error) {
                 setAlert({ type: 'danger', message: error.message });
@@ -107,7 +112,7 @@ function SignUpForm() {
                     </div>
 
                     <button type="submit" className="btn btn-dark btn-sm">Sign Up</button>
-                    <button className="btn btn-light float-end" onClick={() => navigate(-1)}>Go Back</button>
+                    <button type="button" className="btn btn-light float-end" onClick={() => navigate(-1)}>Go Back</button>
                 </form>
             </div>
         </div>
