@@ -1,0 +1,61 @@
+/* src/Login.css */
+
+body {
+    margin: 0;
+    height: 100vh; /* Ensure the body covers the full viewport height */
+    display: flex;
+    flex-direction: column;
+    background-image: url('./Images/Background.jpg'); /* Adjust the path based on your file structure */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
+  }
+  
+  .background-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-container {
+    padding: 20px;
+    width: 70%; /* Adjust the width as needed */
+    max-width: 600px; /* Add a maximum width to prevent it from becoming too large */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for better visibility */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+    color: #fff; /* Change text color for better visibility */
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #7a1e7a;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Ensure the button covers 100% of its container width */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  }
+  
+  a {
+    color: #fff; /* Adjust the color as needed */
+    display: block
+  }

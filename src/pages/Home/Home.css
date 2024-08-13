@@ -1,0 +1,59 @@
+.homepage-component{
+  /* background-image: url('https://i.pinimg.com/originals/d8/ae/07/d8ae07083b5ef20906ea7d66139bca9d.jpg'); */
+  background-size: cover;
+  background-repeat: round;
+  height: 900px;
+  width: 100%;
+}
+
+.homepage-component h1{
+  display: flex;
+  justify-content: center;
+  padding-top: 450px;
+  color: rgb(249, 246, 236);
+  font-weight: 400;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 4.5rem;
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.7), 
+    2px 2px 5px rgba(0, 0, 0, 0.5), 
+    3px 3px 7px rgba(0, 0, 0, 0.3);
+}
+.header-component h6{
+  display: flex;
+  justify-content: center;
+  
+  color: rgb(249, 246, 236);
+  font-weight: 400;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2.0rem;
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.7), 
+    2px 2px 5px rgba(0, 0, 0, 0.5), 
+    3px 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.header-1{
+  display: flex;
+  padding-top: 20px;
+  padding-left: 20px;
+  color: rgb(9, 7, 0);
+  font-weight: 400;
+  font-size: 1.5rem;
+
+}
+
+.header-2{
+  display: flex;
+  /* padding-top: : */
+  padding-bottom: 10px;
+  padding-left: 20px;
+  color: rgb(79, 78, 75);
+  font-weight: 400;
+  font-size: 1.0rem;
+}
+
+body{
+  background-color: rgb(20, 19, 19)
+}
+
