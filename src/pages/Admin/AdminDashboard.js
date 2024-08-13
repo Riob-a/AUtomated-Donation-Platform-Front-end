@@ -36,7 +36,10 @@ function AdminDashboard() {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
+        <div>
+        <Link to="/" className="btn btn-light m-4">Logout</Link>
+        </div>
       </div>
     </div>
   );

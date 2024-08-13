@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LoginForm = () => {
+const AdminLoginForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
@@ -18,7 +18,7 @@ const LoginForm = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('https://automated-donation-platform-back-end.onrender.com/users/login', {
+      const response = await fetch('https://automated-donation-platform-back-end.onrender.com/admin/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const LoginForm = () => {
 
       if (response.ok) {
         setAlert({ type: 'success', message: data.message || 'Login successful!' });
-        navigate('/'); // Navigate to the home page after successful login
+        navigate('/admin_dashboard');
       } else if (response.status === 401) {
         setAlert({ type: 'danger', message: data.msg || 'Invalid email or password!' });
       } else {
@@ -44,9 +44,9 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="container p-4">
+    <div className="container p-4 mb-4">
       <div className="container p-4 m-3 bg-dark text-light text-center">
-        <h2>Login</h2>
+        <h2>Admin Login</h2>
       </div>
 
       <div className="container p-4 m-3 bg-secondary rounded">
@@ -61,7 +61,7 @@ const LoginForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email"
+              placeholder="Enter your admin email"
               required
             />
           </div>
@@ -92,4 +92,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default AdminLoginForm;
