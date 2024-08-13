@@ -14,6 +14,7 @@ import CharityApplicationForm from "./pages/Charities/CharityApplicationForm";
 import SignUpForm from "./pages/Home/SignUpForm";
 import LoginForm from "./pages/Home/Login";
 import AdminLoginForm from "./pages/Admin/AdminLogin";
+import AdminRegisterForm from "./pages/Admin/AdminRegister";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/sign_up" element={<SignUpForm />} />
         <Route path="/admin_login" element={<AdminLoginForm />} />
+        <Route path="/admin_register" element={<AdminRegisterForm />} />
       </Routes>
       <Footer />
     </Router>

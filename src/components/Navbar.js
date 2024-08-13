@@ -23,7 +23,7 @@ function Navbar(){
             <li className="nav-item">
               <a className="nav-link" href="/admin_login">Admin</a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item float-end">
               <a className="nav-link" href="/sign_up">Sign Up</a>
             </li>
           </ul>

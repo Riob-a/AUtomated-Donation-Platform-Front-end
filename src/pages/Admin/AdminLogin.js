@@ -52,11 +52,11 @@ const AdminLoginForm = () => {
       <div className="container p-4 m-3 bg-secondary rounded">
         {alert && <div className={`alert alert-${alert.type}`} role="alert">{alert.message}</div>}
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="formEmail" className="form-label">Email</label>
+          <div className="mb-4 p-3 fs-4">
+            <label htmlFor="formEmail" className="form-label"><b>Email</b></label>
             <input
               type="email"
-              className="form-control"
+              className="form-control form-control-lg"
               id="formEmail"
               name="email"
               value={formData.email}
@@ -66,11 +66,11 @@ const AdminLoginForm = () => {
             />
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="formPassword" className="form-label">Password</label>
+          <div className="mb-4 p-3 fs-4">
+            <label htmlFor="formPassword" className="form-label"><b>Password</b></label>
             <input
               type="password"
-              className="form-control"
+              className="form-control form-control-lg"
               id="formPassword"
               name="password"
               value={formData.password}
@@ -80,10 +80,10 @@ const AdminLoginForm = () => {
             />
           </div>
 
-          <button type="submit" className="btn btn-dark btn-sm">
+          <button type="submit" className="btn btn-dark btn-lg">
             Login
           </button>
-          <button className="btn btn-light float-end btn-sm" onClick={() => navigate(-1)}>
+          <button className="btn btn-light float-end btn-lg" onClick={() => navigate(-1)}>
             Go Back
           </button>
         </form>
