@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function SignUpForm() {
+function AdminRegisterForm() {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
@@ -18,47 +18,37 @@ function SignUpForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const adminCredentials = {
-            username: "Herpes",
-            email: "herpes@gmail.com",
-            password: "parisgames"
-        };
+        try {
+            const response = await fetch('https://automated-donation-platform-back-end.onrender.com/admin/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
 
-        if (formData.username === adminCredentials.username && 
-            formData.email === adminCredentials.email && 
-            formData.password === adminCredentials.password) {
-            navigate('/admin_dashboard');
-        } else {
-            try {
-                const response = await fetch('https://automated-donation-platform-back-end.onrender.com/users/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.msg || 'Error registering user');
-                }
-
-                setAlert({ type: 'success', message: 'User registered successfully!' });
-                setTimeout(() => {
-                    navigate('/');
-                }, 2000); // 2-second delay
-
-                console.log(await response.json());
-            } catch (error) {
-                setAlert({ type: 'danger', message: error.message });
-                console.error(error);
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.msg || 'Error registering admin');
             }
+
+            setAlert({ type: 'success', message: 'Admin successfully registered!' });
+            setTimeout(() => {
+                navigate('/admin_dashboard');
+            }, 2000); // 2-second delay
+
+            console.log(await response.json());
+        } catch (error) {
+            setAlert({ type: 'danger', message: error.message });
+            console.error(error);
         }
     };
 
     return (
         <div className="container p-4">
-            <div className="container p-4 m-3 bg-dark text-light text-center"><h1>Sign Up</h1></div>
+            <div className="container p-4 m-3 bg-dark text-light text-center">
+                <h1>Admin Registration</h1>
+            </div>
             
             <div className="container p-4 m-3 bg-secondary rounded">
                 {alert && (
@@ -67,7 +57,7 @@ function SignUpForm() {
                     </div>
                 )}
                 <form onSubmit={handleSubmit}>
-                    <div className="mb-3 fs-4 p-3">
+                    <div className="mb-4 p-3 fs-4">
                         <label htmlFor="formUsername" className="form-label"><b>Username</b></label>
                         <input
                             type="text"
@@ -81,7 +71,7 @@ function SignUpForm() {
                         />
                     </div>
 
-                    <div className="mb-3 fs-4 p-3">
+                    <div className="mb-4 p-3 fs-4">
                         <label htmlFor="formEmail" className="form-label"><b>Email</b></label>
                         <input
                             type="email"
@@ -95,7 +85,7 @@ function SignUpForm() {
                         />
                     </div>
 
-                    <div className="mb-3 fs-4 p-3">
+                    <div className="mb-4 p-3 fs-4">
                         <label htmlFor="formPassword" className="form-label"><b>Password</b></label>
                         <input
                             type="password"
@@ -109,7 +99,7 @@ function SignUpForm() {
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-dark btn-lg">Sign Up</button>
+                    <button type="submit" className="btn btn-dark btn-sm">Register</button>
                     <button type="button" className="btn btn-light float-end" onClick={() => navigate(-1)}>Go Back</button>
                 </form>
             </div>
@@ -117,4 +107,4 @@ function SignUpForm() {
     );
 }
 
-export default SignUpForm;
+export default AdminRegisterForm;
