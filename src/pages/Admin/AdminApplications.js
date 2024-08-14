@@ -16,7 +16,7 @@ function AdminApplications() {
 
   // Handle approval
   const handleApprove = (id) => {
-    fetch(`https://automated-donation-platform-back-end.onrender.com/applications/${id}`, {
+    fetch(`https://automated-donation-platform-back-end.onrender.com/unapproved-charities/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ function AdminApplications() {
 
   // Rejection Logic
   const handleReject = (id) => {
-    fetch(`https://automated-donation-platform-back-end.onrender.com/applications/${id}`, {
+    fetch(`https://automated-donation-platform-back-end.onrender.com/unapproved-charities/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
