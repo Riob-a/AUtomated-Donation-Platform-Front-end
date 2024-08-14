@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Automated-Donation-Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Date, 7/8/2024
 
-## Available Scripts
+#### By *Derrick, Ramsey, Emmanuel, Hillary*
 
-In the project directory, you can run:
+## Description
+Automated-donation-Platform is a web application that allows users to donate to various beneficiaries and charities. The platform enables users to view a list of available beneficiaries, submit their own charity applications, and track their donations.
+## Installation
+ Fork and clone the folders to your own repository
 
-### `npm start`
+## Installation Requirements
+1. Git
+2. Node version manager
+3. Code editor
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Installation instruction
+1. Fork the folders into your own repository
+2. To copy the code to your own machine ,clone the repository  into a specified directory, by typing the line "git clone" followed by the provided link, that can be found on the code button on github i.e ;
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+Git clone https://github.com/Riob-a/Automated-Donation-Platform-Front-end
+```
+3. Access the cloned code using the code editor of your choice
 
-### `npm test`
+## Project initialization
+1. cd into the Back-end folder
+2. Run npm install
+3. Once instalation is done run npm start to run development server
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Technologies used
+1. Node
+2. JavaScript
+3. Github
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Support and contact details
+[github.com/emmanuelkisoso],
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[github.com/{Draven0g}],
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[github.com/Roadman-H],
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[github.com/Riob-a]
+### License
+[MIT License](LICENSE)
+The content of this site is licensed under the MIT license
+Copyright (c) 2024.
