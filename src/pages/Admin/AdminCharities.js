@@ -26,6 +26,7 @@ function AdminCharities() {
         if (response.ok) {
           // Remove the deleted charity from the state
           setCharities(charities.filter((charity) => charity.id !== id));
+          alert("Charity has been deleted");
         } else {
           console.error("Error deleting charity");
         }
