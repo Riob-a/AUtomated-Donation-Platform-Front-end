@@ -21,7 +21,7 @@ function AdminDashboard() {
                 <h5 className="card-title">Applications</h5>
                 <p className="card-text">Navigate to all the available Applications for approval</p>
                 <br />
-                <Link to="/applications" className="btn btn-dark">Go to Applications</Link>
+                <Link to="/applications" className="btn btn-dark m-2">Go to Applications</Link>
               </div>
             </div>
           </div>
@@ -32,7 +32,8 @@ function AdminDashboard() {
                 <h5 className="card-title">Charities</h5>
                 <p className="card-text">Navigate to all the available charities for management</p>
                 <br />
-                <Link to="/admin_charities" className="btn btn-dark">Go to Charities</Link>
+                <Link to="/admin_charities" className="btn btn-dark m-2">Go to Charities</Link>
+                <Link to="/admin_beneficiaries" className="btn btn-dark m-2">Go to Beneficiaries</Link>
               </div>
             </div>
           </div>
@@ -43,7 +44,7 @@ function AdminDashboard() {
                 <h5 className="card-title">Register Admin</h5>
                 <p className="card-text">Register a new admin for system administration and management</p>
                 <br />
-                <Link to="/admin_register" className="btn btn-dark">Register Admin</Link>
+                <Link to="/admin_register" className="btn btn-dark m-2">Register Admin</Link>
               </div>
             </div>
           </div>

@@ -117,9 +117,9 @@ const Charities = () => {
               <div className="card w-75 text-bg-secondary">
                 <img src={charity.image_url} className="card-img-top bg-dark p-4" alt={charity.name} />
                 <div className="card-body">
-                  <h5 className="card-title">{charity.name}</h5>
-                  <p className="card-text">{charity.description}</p>
-                  <p className="card-text">
+                  <h5 className="card-title border-w p-4 shadow p-4 mb-5 rounded">{charity.name}</h5>
+                  <p className="card-text border-w p-3 shadow p-3 mb-5 rounded">{charity.description}</p>
+                  <p className="card-text border-w p-3 shadow p-3 mb-5 rounded">
                     <b>Total Donations: ${charity.total_donations.toFixed(2)}</b>
                   </p>
                   <input
@@ -127,11 +127,11 @@ const Charities = () => {
                     value={donationAmounts[charity.id] || ""}
                     onChange={(e) => handleAmountChange(charity.id, e.target.value)}
                     placeholder="Amount"
-                    className="form-control mb-2"
+                    className="form-control mb-2 border-w p-3 shadow p-3 mb-5 rounded"
                   />
                   <button
                     onClick={() => handleDonate(charity.id)}
-                    className="btn btn-dark"
+                    className="btn btn-dark btn-lg"
                   >
                     Donate
                   </button>

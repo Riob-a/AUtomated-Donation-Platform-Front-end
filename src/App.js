@@ -15,6 +15,7 @@ import SignUpForm from "./pages/Home/SignUpForm";
 import LoginForm from "./pages/Home/Login";
 import AdminLoginForm from "./pages/Admin/AdminLogin";
 import AdminRegisterForm from "./pages/Admin/AdminRegister";
+import AdminBeneficiaries from "./pages/Admin/AdminBeneficiaries";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/sign_up" element={<SignUpForm />} />
         <Route path="/admin_login" element={<AdminLoginForm />} />
         <Route path="/admin_register" element={<AdminRegisterForm />} />
+        <Route path="/admin_beneficiaries" element={<AdminBeneficiaries />} />
       </Routes>
       <Footer />
     </Router>
