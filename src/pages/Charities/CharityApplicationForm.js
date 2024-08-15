@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
 
-
 function CharityApplicationForm() {
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     website: "",
     image_url: "",
   });
+  const [status, setStatus] = useState("");
+  const charityId = "unique_charity_id_or_email"; // Replace with actual identifier
 
-//Submission logic
+  // Fetch status of charity application on component mount
+  useEffect(() => {
+    fetch(`https://automated-donation-platform-back-end.onrender.com/unapproved-charities/${charityId}`)
+      .then(response => response.json())
+      .then(data => {
+        setStatus(data.status);
+        if (data.status === "Approved") {
+          alert(`${data.message || "Your charity has been approved!"} Charity Name: ${formData.name}`);
+        }
+      })
+      .catch(error => console.error("Error fetching charity status:", error));
+  }, [charityId, formData.name]); // Added formData.name as a dependency
+
+  // Handle form changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -47,7 +61,7 @@ function CharityApplicationForm() {
       });
   };
 
-//Page Content
+  // Page Content
   return (
     <div className="container p-4">
       <div className="container p-4 m-3 bg-dark text-light text-center rounded"><h1 className="">Charity Application Form</h1></div>
