@@ -5,7 +5,7 @@ import React from "react";
 function Footer(){
     return(
         <footer className="footer p-5"> 
-        <div className="container"> 
+        <div className="container-fluid"> 
             <div className="row"> 
                 <div className="col-md-3"> 
                     <h2>Fund.<i>Girls</i></h2> 

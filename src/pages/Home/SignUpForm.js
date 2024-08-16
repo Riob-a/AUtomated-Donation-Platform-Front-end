@@ -18,100 +18,94 @@ function SignUpForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const adminCredentials = {
-            username: "Herpes",
-            email: "herpes@gmail.com",
-            password: "parisgames"
-        };
+        try {
+            const response = await fetch('https://automated-donation-platform-back-end.onrender.com/users/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
 
-        if (formData.username === adminCredentials.username && 
-            formData.email === adminCredentials.email && 
-            formData.password === adminCredentials.password) {
-            navigate('/admin_dashboard');
-        } else {
-            try {
-                const response = await fetch('https://automated-donation-platform-back-end.onrender.com/users/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    throw new Error(errorData.msg || 'Error registering user');
-                }
-
-                setAlert({ type: 'success', message: 'User registered successfully!' });
-                setTimeout(() => {
-                    navigate('/');
-                }, 2000); // 2-second delay
-
-                console.log(await response.json());
-            } catch (error) {
-                setAlert({ type: 'danger', message: error.message });
-                console.error(error);
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.msg || 'Error registering user');
             }
+
+            setAlert({ type: 'success', message: 'User registered successfully!' });
+            setTimeout(() => {
+                navigate('/');
+            }, 2000); // 2-second delay
+
+            console.log(await response.json());
+        } catch (error) {
+            setAlert({ type: 'danger', message: error.message });
+            console.error(error);
         }
     };
 
     return (
-        <div className="container p-4">
-            <div className="container p-4 m-3 bg-dark text-light text-center"><h1>Sign Up</h1></div>
-            
-            <div className="container p-4 m-3 bg-secondary rounded">
-                {alert && (
-                    <div className={`alert ${alert.type === 'success' ? 'alert-success' : 'alert-danger'}`} role="alert">
-                        {alert.message}
-                    </div>
-                )}
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3 fs-4 p-3">
-                        <label htmlFor="formUsername" className="form-label"><b>Username</b></label>
-                        <input
-                            type="text"
-                            className="form-control form-control-lg"
-                            id="formUsername"
-                            name="username"
-                            placeholder="Enter your username"
-                            value={formData.username}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
+        <div className="d-flex justify-content-center align-items-center vh-100 bg-dark text-light">
+            <div className="w-100 p-5" style={{ maxWidth: "500px" }}>
+                <h2 className="text-center mb-4">Sign Up</h2>
+                
+                <div className="bg-secondary p-4 rounded-5">
+                    {alert && (
+                        <div className={`alert alert-${alert.type}`} role="alert">
+                            {alert.message}
+                        </div>
+                    )}
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-4">
+                            <label htmlFor="formUsername" className="form-label"><b>Username</b></label>
+                            <input
+                                type="text"
+                                className="form-control form-control-lg"
+                                id="formUsername"
+                                name="username"
+                                placeholder="Enter your username"
+                                value={formData.username}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
 
-                    <div className="mb-3 fs-4 p-3">
-                        <label htmlFor="formEmail" className="form-label"><b>Email</b></label>
-                        <input
-                            type="email"
-                            className="form-control form-control-lg"
-                            id="formEmail"
-                            name="email"
-                            placeholder="Enter your email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
+                        <div className="mb-4">
+                            <label htmlFor="formEmail" className="form-label"><b>Email</b></label>
+                            <input
+                                type="email"
+                                className="form-control form-control-lg"
+                                id="formEmail"
+                                name="email"
+                                placeholder="Enter your email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
 
-                    <div className="mb-3 fs-4 p-3">
-                        <label htmlFor="formPassword" className="form-label"><b>Password</b></label>
-                        <input
-                            type="password"
-                            className="form-control form-control-lg"
-                            id="formPassword"
-                            name="password"
-                            placeholder="Enter your password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
+                        <div className="mb-4">
+                            <label htmlFor="formPassword" className="form-label"><b>Password</b></label>
+                            <input
+                                type="password"
+                                className="form-control form-control-lg"
+                                id="formPassword"
+                                name="password"
+                                placeholder="Enter your password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
 
-                    <button type="submit" className="btn btn-dark btn-lg">Sign Up</button>
-                    <button type="button" className="btn btn-light float-end" onClick={() => navigate(-1)}>Go Back</button>
-                </form>
+                        <button type="submit" className="btn btn-dark btn-lg w-100 mb-3">
+                            Sign Up
+                        </button>
+                        <button type="button" className="btn btn-warning btn-lg w-100" onClick={() => navigate(-1)}>
+                            Go Back
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     );

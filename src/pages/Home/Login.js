@@ -44,49 +44,49 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="container p-4">
-      <div className="container p-4 m-3 bg-dark text-light text-center">
-        <h2>Login</h2>
-      </div>
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-dark text-light">
+      <div className="w-100 p-5" style={{ maxWidth: '500px' }}>
+        <h2 className="text-center mb-4">Login</h2>
 
-      <div className="container p-4 m-3 bg-secondary rounded">
-        {alert && <div className={`alert alert-${alert.type}`} role="alert">{alert.message}</div>}
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="formEmail" className="form-label">Email</label>
-            <input
-              type="email"
-              className="form-control"
-              id="formEmail"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email"
-              required
-            />
-          </div>
+        <div className="bg-secondary p-4 rounded-5">
+          {alert && <div className={`alert alert-${alert.type}`} role="alert">{alert.message}</div>}
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label htmlFor="formEmail" className="form-label"><b>Email</b></label>
+              <input
+                type="email"
+                className="form-control form-control-lg"
+                id="formEmail"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter your email"
+                required
+              />
+            </div>
 
-          <div className="mb-3">
-            <label htmlFor="formPassword" className="form-label">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="formPassword"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="Enter your password"
-              required
-            />
-          </div>
+            <div className="mb-4">
+              <label htmlFor="formPassword" className="form-label"><b>Password</b></label>
+              <input
+                type="password"
+                className="form-control form-control-lg"
+                id="formPassword"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter your password"
+                required
+              />
+            </div>
 
-          <button type="submit" className="btn btn-dark btn-sm">
-            Login
-          </button>
-          <button className="btn btn-light float-end btn-sm" onClick={() => navigate(-1)}>
-            Go Back
-          </button>
-        </form>
+            <button type="submit" className="btn btn-dark btn-lg w-100 mb-3">
+              <b>Login</b>
+            </button>
+            <button type="button" className="btn btn-warning btn-lg w-100" onClick={() => navigate(-1)}>
+              <b>Go Back</b>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
