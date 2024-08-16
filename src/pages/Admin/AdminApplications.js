@@ -15,46 +15,54 @@ function AdminApplications() {
   }, []);
 
   // Handle approval
-  const handleApprove = (id) => {
-    fetch(`https://automated-donation-platform-back-end.onrender.com/unapproved-charities/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: "Approved" }),
+const handleApprove = (id) => {
+  fetch(`https://automated-donation-platform-back-end.onrender.com/unapproved-charities/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ status: "Approved" }),
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Failed to approve charity');
+      }
     })
-      .then((response) => {
-        if (response.ok) {
-          setApplications((prevApplications) =>
-            prevApplications.map((app) =>
-              app.id === id ? { ...app, status: "Approved" } : app
-            )
-          );
-          alert("Added to approval list!");
-        }
-      })
-      .catch((error) => console.error("Error approving application:", error));
-  };
+    .then((data) => {
+      setApplications((prevApplications) =>
+        prevApplications.filter((app) => app.id !== id)
+      );
+      alert("Charity has been approved and moved!");
+    })
+    .catch((error) => console.error("Error approving application:", error));
+};
 
-  // Rejection Logic
-  const handleReject = (id) => {
-    fetch(`https://automated-donation-platform-back-end.onrender.com/unapproved-charities/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ status: "Rejected" }),
+// Rejection Logic
+const handleReject = (id) => {
+  fetch(`https://automated-donation-platform-back-end.onrender.com/unapproved-charities/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ status: "Rejected" }),
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Failed to reject charity');
+      }
     })
-      .then((response) => {
-        if (response.ok) {
-          setApplications((prevApplications) =>
-            prevApplications.filter((app) => app.id !== id)
-          );
-          alert("Application has been rejected!");
-        }
-      })
-      .catch((error) => console.error("Error rejecting application:", error));
-  };
+    .then(() => {
+      setApplications((prevApplications) =>
+        prevApplications.filter((app) => app.id !== id)
+      );
+      alert("Application has been rejected!");
+    })
+    .catch((error) => console.error("Error rejecting application:", error));
+};
 
   // Move applications to Charities
   const handleMoveCharities = () => {
@@ -127,9 +135,9 @@ function AdminApplications() {
           </div>
         ))}
 
-        <button className="btn btn-secondary mt-4" onClick={handleMoveCharities}>
+        {/* <button className="btn btn-secondary mt-4" onClick={handleMoveCharities}>
           Approve Charities
-        </button>
+        </button> */}
 
         {/* Back Button */}
         <button className="btn btn-light mt-4 m-2 float-end" onClick={() => navigate(-1)}>
