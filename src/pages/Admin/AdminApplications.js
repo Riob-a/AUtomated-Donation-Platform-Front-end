@@ -23,15 +23,14 @@ function AdminApplications() {
       },
       body: JSON.stringify({ status: "Approved" }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === "Approved") {
+      .then((response) => {
+        if (response.ok) {
           setApplications((prevApplications) =>
             prevApplications.map((app) =>
               app.id === id ? { ...app, status: "Approved" } : app
             )
           );
-          alert(data.message || "Charity approved!");
+          alert("Added to approval list!");
         }
       })
       .catch((error) => console.error("Error approving application:", error));
