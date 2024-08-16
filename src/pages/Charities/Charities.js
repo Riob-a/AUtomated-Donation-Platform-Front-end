@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
 
-
 const Charities = () => {
   const [charities, setCharities] = useState([]);
   const [donationAmounts, setDonationAmounts] = useState({});
   const [donationError, setDonationError] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4; // Number of charities per page
+  const itemsPerPage = 6; // Adjusted to display 6 items per page
   const navigate = useNavigate(); // Initialize navigate
 
-
-//Fetch Charities
   useEffect(() => {
     fetch("https://automated-donation-platform-back-end.onrender.com/charities")
       .then((response) => response.json())
@@ -20,7 +17,6 @@ const Charities = () => {
       .catch((error) => console.error("Error fetching charities:", error));
   }, []);
 
-//Posts Donations
   const handleDonate = async (charityId) => {
     const amount = donationAmounts[charityId] || "";
 
@@ -43,7 +39,6 @@ const Charities = () => {
       alert("Donation successful!");
       setDonationAmounts((prevState) => ({ ...prevState, [charityId]: "" }));
 
-  // Refresh charity list to update total donations
       fetch("https://automated-donation-platform-back-end.onrender.com/charities")
         .then((response) => response.json())
         .then((data) => setCharities(data))
@@ -65,7 +60,6 @@ const Charities = () => {
     charity.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Pagination logic
   const indexOfLastCharity = currentPage * itemsPerPage;
   const indexOfFirstCharity = indexOfLastCharity - itemsPerPage;
   const currentCharities = filteredCharities.slice(indexOfFirstCharity, indexOfLastCharity);
@@ -84,9 +78,8 @@ const Charities = () => {
     }
   };
 
-//Page content
   return (
-    <div className="bg-dark p-4">
+    <div className="bg-dark p-4 ">
       <div className="row p-1 rounded">
         <div className="col">
           <div className="header-component">
@@ -96,30 +89,33 @@ const Charities = () => {
       </div>
 
       <div className="container p-4 text-center">
-        <div className="card text-bg-dark p-3 shadow p-3 mb-5 rounded">
+        <div className="card text-bg-dark p-3 shadow p-3 mb-5 rounded-pill">
           <h1 className="text-center text-light bg-dark">
             <b>Donate with the Kindness of your Heart</b>
           </h1>
         </div>
 
-        {/* Search bar */}
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Search charities..."
-          className="form-control mb-4 border-dark"
+          className="form-control-lg mb-4  rounded-pill"
         />
 
-        <div className="row row-cols-1 row-cols-md-2 g-4">
+        <div className="row row-cols-1 row-cols-md-3 g-4">
           {currentCharities.map((charity) => (
             <div className="col" key={charity.id}>
-              <div className="card w-75 text-bg-secondary">
-                <img src={charity.image_url} className="card-img-top bg-dark p-4" alt={charity.name} />
+              <div className="card rounded-4  text-bg-secondary">
+                <img 
+                  src={charity.image_url} 
+                  className="card-img-top bg-dark p-4" 
+                  alt={charity.name} 
+                />
                 <div className="card-body">
-                  <h5 className="card-title border-w p-4 shadow p-4 mb-5 rounded">{charity.name}</h5>
-                  <p className="card-text border-w p-3 shadow p-3 mb-5 rounded">{charity.description}</p>
-                  <p className="card-text border-w p-3 shadow p-3 mb-5 rounded">
+                  <h5 className="card-title border-w p-4 shadow p-4 mb-5 rounded-pill">{charity.name}</h5>
+                  <p className="card-text border-w p-3 shadow p-3 mb-5 rounded-pill">{charity.description}</p>
+                  <p className="card-text border-w p-3 shadow p-3 mb-5 rounded-pill">
                     <b>Total Donations: ${charity.total_donations.toFixed(2)}</b>
                   </p>
                   <input
@@ -142,7 +138,6 @@ const Charities = () => {
           ))}
         </div>
 
-        {/* Pagination controls */}
         <div className="pagination-controls mt-4">
           <button
             className="btn btn-secondary"
@@ -159,10 +154,9 @@ const Charities = () => {
           >
             Next
           </button>
-          {/* Back Button */}
-        <button className="btn btn-light  float-end" onClick={() => navigate(-1)}>
-          Go Back
-        </button>
+          <button className="btn btn-warning float-end rounded-pill" onClick={() => navigate(-1)}>
+            Go Back
+          </button>
         </div>
       </div>
     </div>

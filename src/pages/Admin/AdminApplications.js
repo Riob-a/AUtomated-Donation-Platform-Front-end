@@ -124,7 +124,7 @@ const handleReject = (id) => {
                     <small className="text-body-secondary"><b>Last updated {new Date(app.date_submitted).toLocaleString()}</b></small>
                   </p>
                   <button className="btn btn-dark" onClick={() => handleApprove(app.id)}>
-                    Add to approval list
+                    Approve
                   </button>
                   <button className="btn btn-dark m-4" onClick={() => handleReject(app.id)}>
                     Reject
@@ -140,7 +140,7 @@ const handleReject = (id) => {
         </button> */}
 
         {/* Back Button */}
-        <button className="btn btn-light mt-4 m-2 float-end" onClick={() => navigate(-1)}>
+        <button className="btn btn-warning mt-4 m-2 rounded-pill" onClick={() => navigate(-1)}>
           Go Back
         </button>
       </div>

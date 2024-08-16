@@ -103,7 +103,7 @@ function AdminBeneficiaries() {
           </button>
 
           {/* Back Button */}
-          <button className="btn btn-light float-end" onClick={() => navigate(-1)}>
+          <button className="btn btn-warning float-end rounded-pill" onClick={() => navigate(-1)}>
             Go Back
           </button>
         </div>
