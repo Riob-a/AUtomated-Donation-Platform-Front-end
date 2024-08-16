@@ -23,7 +23,8 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LoginForm />} /> 
+        <Route path="/home" element={<Home />} />
         <Route path="/admin_dashboard" element={<AdminDashboard />} />
         <Route path="/admin_charities" element={<AdminCharities />} />
         <Route path="/applications" element={<AdminApplications />} />
@@ -31,7 +32,6 @@ function App() {
         <Route path="/charities" element={<Charities />} />
         <Route path="/charities_form" element={<CharityApplicationForm />} />
         <Route path="/beneficiaries_form" element={<BeneficiariesForm />} />
-        <Route path="/login" element={<LoginForm />} />
         <Route path="/sign_up" element={<SignUpForm />} />
         <Route path="/admin_login" element={<AdminLoginForm />} />
         <Route path="/admin_register" element={<AdminRegisterForm />} />
