@@ -135,9 +135,9 @@ const handleReject = (id) => {
           </div>
         ))}
 
-        <button className="btn btn-secondary mt-4" onClick={handleMoveCharities}>
+        {/* <button className="btn btn-secondary mt-4" onClick={handleMoveCharities}>
           Approve Charities
-        </button>
+        </button> */}
 
         {/* Back Button */}
         <button className="btn btn-light mt-4 m-2 float-end" onClick={() => navigate(-1)}>
