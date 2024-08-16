@@ -30,7 +30,7 @@ const LoginForm = () => {
 
       if (response.ok) {
         setAlert({ type: 'success', message: data.message || 'Login successful!' });
-        navigate('/'); // Navigate to the home page after successful login
+        navigate('/home'); 
       } else if (response.status === 401) {
         setAlert({ type: 'danger', message: data.msg || 'Invalid email or password!' });
       } else {
