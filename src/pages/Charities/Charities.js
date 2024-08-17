@@ -79,7 +79,7 @@ const Charities = () => {
   };
 
   return (
-    <div className="bg-dark p-4 ">
+    <div className="bg-dark p-4 mt-5 ">
       <div className="row p-1 rounded">
         <div className="col">
           <div className="header-component">
@@ -140,7 +140,7 @@ const Charities = () => {
 
         <div className="pagination-controls mt-4">
           <button
-            className="btn btn-secondary"
+            className="btn btn-warning rounded-pill"
             onClick={handlePrevPage}
             disabled={currentPage === 1}
           >
@@ -148,7 +148,7 @@ const Charities = () => {
           </button>
           <span className="mx-2 text-light">{currentPage} of {totalPages}</span>
           <button
-            className="btn btn-secondary"
+            className="btn btn-warning rounded-pill"
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
           >

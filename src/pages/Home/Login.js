@@ -30,7 +30,9 @@ const LoginForm = () => {
 
       if (response.ok) {
         setAlert({ type: 'success', message: data.message || 'Login successful!' });
-        navigate('/home'); 
+        setTimeout(()=> {
+          navigate('/home');
+        }, 2000); 
       } else if (response.status === 401) {
         setAlert({ type: 'danger', message: data.msg || 'Invalid email or password!' });
       } else {
@@ -82,9 +84,9 @@ const LoginForm = () => {
             <button type="submit" className="btn btn-dark btn-lg w-100 mb-3">
               <b>Login</b>
             </button>
-            <button type="button" className="btn btn-warning btn-lg w-100" onClick={() => navigate(-1)}>
+            {/* <button type="button" className="btn btn-warning btn-lg w-100" onClick={() => navigate(-1)}>
               <b>Go Back</b>
-            </button>
+            </button> */}
           </form>
         </div>
       </div>

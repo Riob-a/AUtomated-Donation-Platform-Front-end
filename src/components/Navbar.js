@@ -1,8 +1,13 @@
 import React from "react";
 
 function Navbar() {
+  // Handle logout click
+  const handleLogout = () => {
+    alert("You have been logged out !");
+  };
+
   return (
-    <nav className="navbar navbar-expand   fixed-top">
+    <nav className="navbar navbar-expand fixed-top">
       <div className="container-fluid">
         <a className="navbar-brand" href="/home">
           Fund<b><i>.Girls</i></b>
@@ -36,7 +41,7 @@ function Navbar() {
               <a className="nav-link" href="/sign_up">Sign Up</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">Log in</a>
+              <a className="nav-link" href="/" onClick={handleLogout}>Log out</a>
             </li>
           </ul>
         </div>
