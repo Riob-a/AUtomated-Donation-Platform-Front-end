@@ -4,7 +4,7 @@ import "./Admin.css";
 
 function AdminDashboard() {
   return (
-    <div className="bg-dark p-4">
+    <div className="bg-dark p-4 mt-5">
       <div className="row p-1 rounded">
         <div className="col">
           <div className="header-component">
@@ -13,7 +13,7 @@ function AdminDashboard() {
         </div>
       </div>
 
-      <div className="container p-1">
+      <div className="container p-1 mt-5">
         <div className="row p-4">
           <div className="col-md-4 mb-3">
             <div className="card w-100 text-bg-secondary rounded-5">

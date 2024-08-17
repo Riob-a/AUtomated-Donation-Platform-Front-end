@@ -56,14 +56,14 @@ function AdminCharities() {
 //Page content
   return (
     <div className="bg-dark">
-      <div className="container p-4 bg-dark">
-        <div className="card text-bg-dark border-w p-3 shadow p-3 mb-5 rounded">
+      <div className="container p-4 mt-5 bg-dark">
+        <div className="card text-bg-dark border-w p-3 shadow p-3 mb-5 rounded-pill">
           <h5 className="text-light"><b>Track</b></h5>
           <h3 className="text-light">The following</h3>
         </div>
 
         {currentCharities.map((charity) => (
-          <div key={charity.id} className="card bg-secondary mb-3 p-4 shadow p-3 mb-5 rounded">
+          <div key={charity.id} className="card bg-secondary mb-3 p-4 shadow p-3 mb-5 rounded-5">
             <div className="row g-0">
               <div className="col-md-4">
                 {charity.image_url ? (
@@ -92,8 +92,8 @@ function AdminCharities() {
               </div>
               <div className="col-md-8">
                 <div className="card-body text-light">
-                  <h5 className="card-title text-light">{charity.name}</h5>
-                  <p className="card-text">{charity.description}</p>
+                  <h5 className="card-title text-light fs-4">{charity.name}</h5>
+                  <p className="card-text fs-4">{charity.description}</p>
                   <br />
                   <button onClick={() => handleDelete(charity.id)} className="btn btn-danger">Delete</button>
                 </div>
@@ -105,7 +105,7 @@ function AdminCharities() {
         {/* Pagination controls */}
         <div className="pagination-controls mt-4">
           <button
-            className="btn btn-secondary"
+            className="btn btn-warning rounded-pill"
             onClick={handlePrevPage}
             disabled={currentPage === 1}
           >
@@ -115,7 +115,7 @@ function AdminCharities() {
             {currentPage} of {totalPages}
           </span>
           <button
-            className="btn btn-secondary"
+            className="btn btn-warning rounded-pill"
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
           >

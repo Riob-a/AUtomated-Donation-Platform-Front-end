@@ -103,10 +103,10 @@ function CharityApplicationForm() {
                 required
               />
             </div>
-            <button type="submit" className="btn btn-dark btn-lg w-100 mb-3">
+            <button type="submit" className="btn btn-dark btn-lg w-100 mb-3 rounded-pill">
               Submit
             </button>
-            <button type="button" className="btn btn-warning btn-lg w-100" onClick={() => navigate(-1)}>
+            <button type="button" className="btn btn-warning btn-lg w-100 rounded-pill" onClick={() => navigate(-1)}>
               Go Back
             </button>
           </form>
