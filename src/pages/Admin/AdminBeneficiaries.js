@@ -66,7 +66,7 @@ function AdminBeneficiaries() {
           <div key={beneficiary.id} className="card mb-3 bg-secondary  border-w p-3 shadow p-3 mb-5 rounded-5">
             <img
               src={beneficiary.imageUrl}
-              className="card-img-top  border-w p-3 shadow p-3 mb-5 rounded"
+              className="card-img-top  bg-dark p-4 rounded-4"
               alt={beneficiary.name}
               style={{ width: "100%", height: "250px" }}
             />
