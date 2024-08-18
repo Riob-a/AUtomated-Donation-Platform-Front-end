@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom"; 
 
 const Beneficiaries = () => {
-  const navigate = useNavigate();
   const [beneficiaries, setBeneficiaries] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const beneficiariesPerPage = 5; // Adjusted to display 5 beneficiaries per page
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('https://automated-donation-platform-back-end.onrender.com/beneficiaries')
@@ -34,31 +34,47 @@ const Beneficiaries = () => {
 
   return (
     <div className="bg-dark p-4">
-      <div className="container p-4 mt-5 bg-dark">
-        <div className="card text-bg-dark border-w p-3 shadow p-3 mb-5 rounded-pill">
-          <h5 className="text-light"><b>The Beneficiaries</b></h5>
-          <h3 className="text-light">of Your Kindness</h3>
+      <div>
+        <div className="row p-1 mt-5 rounded">
+          <div className="col">
+            <div className="header-component">
+              <h1>Beneficiaries</h1>
+              <h6>of Your Kindness</h6>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div className="container-fluid p-4 m-2">
+        <h5 className="text-light bg-dark"><b>The Beneficiaries</b></h5>
+        <h3 className="text-light bg-dark">of Your Generosity</h3>
 
         {currentBeneficiaries.map((beneficiary) => (
-          <div key={beneficiary.id} className="card mb-3 bg-secondary border-w p-3 shadow p-3 mb-5 rounded-5">
-            <img
-              src={beneficiary.imageUrl}
-              className="card-img-top bg-dark p-4 rounded-4"
-              alt={beneficiary.name}
-              style={{ width: "100%", height: "250px" }}
-            />
-            <div className="card-body">
-              <h5 className="card-title text-light">{beneficiary.name}</h5>
-              <p className="card-text text-light">{beneficiary.story}</p>
-              <p className="card-text text-light">
-                <strong>Charity:</strong> {beneficiary.charity ? beneficiary.charity.name : "N/A"}
-              </p>
+          <div key={beneficiary.id} className="card bg-secondary mb-3 p-4 shadow p-3 mb-5 rounded-5">
+            <div className="row g-0">
+              <div className="col-md-4">
+                <img
+                  src={beneficiary.image_url || "placeholder-image-url"}
+                  className="bd-placeholder-img img-fluid rounded-start bg-dark"
+                  alt={beneficiary.name}
+                  width="80%"
+                  height="80%"
+                />
+              </div>
+              <div className="col-md-8">
+                <div className="card-body">
+                  <h5 className="card-title text-light fs-1">{beneficiary.name}</h5>
+                  <p className="card-text text-light ">{beneficiary.story}</p>
+                  <p className="card-text text-light ">
+                    <strong>Charity:</strong> {beneficiary.charity ? beneficiary.charity.name : "N/A"}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         ))}
 
-        {/* Pagination Controls */}
+        {/* Pagination controls */}
         <div className="pagination-controls mt-4">
           <button
             className="btn btn-warning rounded-pill"
@@ -67,7 +83,9 @@ const Beneficiaries = () => {
           >
             Previous
           </button>
-          <span className="mx-2 text-light">{currentPage} of {totalPages}</span>
+          <span className="mx-2 text-light">
+            {currentPage} of {totalPages}
+          </span>
           <button
             className="btn btn-warning rounded-pill"
             onClick={handleNextPage}
@@ -75,12 +93,12 @@ const Beneficiaries = () => {
           >
             Next
           </button>
-        </div>
 
-        {/* Back Button */}
-        <button className="btn btn-warning float-end rounded-pill mb-5" onClick={() => navigate(-1)}>
-          Go Back
-        </button>
+          {/* Back Button */}
+          <button className="btn btn-warning float-end rounded-pill" onClick={() => navigate(-1)}>
+            Go Back
+          </button>
+        </div>
       </div>
     </div>
   );
