@@ -103,19 +103,19 @@ const Charities = () => {
           className="form-control-lg mb-4  rounded-pill"
         />
 
-        <div className="row row-cols-1 row-cols-md-3 g-4">
+        <div className="row row-cols-2 row-cols-md-2 g-5">
           {currentCharities.map((charity) => (
             <div className="col" key={charity.id}>
               <div className="card rounded-4  text-bg-secondary">
                 <img 
                   src={charity.image_url} 
-                  className="card-img-top bg-dark p-4" 
+                  className="card-img-top bg-dark p-4 rounded-4" 
                   alt={charity.name} 
                 />
                 <div className="card-body">
-                  <h5 className="card-title border-w p-4 shadow p-4 mb-5 rounded-pill">{charity.name}</h5>
-                  <p className="card-text border-w p-3 shadow p-3 mb-5 rounded-pill">{charity.description}</p>
-                  <p className="card-text border-w p-3 shadow p-3 mb-5 rounded-pill">
+                  <h5 className="card-title rounded-pill">{charity.name}</h5>
+                  <p className="card-text border border-w p-2 rounded-pill">{charity.description}</p>
+                  <p className="card-text border border-w p-3  rounded-pill">
                     <b>Total Donations: ${charity.total_donations.toFixed(2)}</b>
                   </p>
                   <input
