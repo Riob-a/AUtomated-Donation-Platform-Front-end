@@ -6,7 +6,7 @@ function BeneficiariesForm() {
   const [formData, setFormData] = useState({
     name: "",
     story: "",
-    imageUrl: "",
+    image_url: "",
     charity_id: "",
   });
 
@@ -47,7 +47,7 @@ function BeneficiariesForm() {
       .then(data => {
         console.log('Beneficiary created:', data);
         alert("Beneficiary submitted successfully!");
-        setFormData({ name: "", story: "", imageUrl: "", charity_id: "" });  // Reset form
+        setFormData({ name: "", story: "", image_url: "", charity_id: "" });  // Reset form
       })
       .catch(error => {
         console.error('Error:', error);
@@ -89,14 +89,14 @@ function BeneficiariesForm() {
               />
             </div>
             <div className="mb-4 p-3 fs-4">
-              <label htmlFor="imageUrl" className="form-label"><b>Image URL</b></label>
+              <label htmlFor="image_url" className="form-label"><b>Image URL</b></label>
               <input 
                 type="text" 
                 className="form-control form-control-lg"
-                id="imageUrl" 
-                name="imageUrl" 
+                id="image_url" 
+                name="image_url" 
                 placeholder="Enter image URL"
-                value={formData.imageUrl}
+                value={formData.image_url}
                 onChange={handleChange} 
                 required
               />
