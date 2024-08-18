@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; 
 
-
 function BeneficiariesForm() {
   const navigate = useNavigate(); // Initialize navigate
   const [formData, setFormData] = useState({
@@ -56,70 +55,78 @@ function BeneficiariesForm() {
       });
   };
 
-  //Page content
+  // Page content
   return (
-    <div className="container p-4">
-      <div className="container p-4 m-3 bg-dark text-light text-center"><h1>Add Beneficiary Details</h1></div>
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-dark text-light">
+      <div className="w-100 p-5" style={{ maxWidth: '800px' }}>
+        <h2 className="text-center mb-4">Add Beneficiary Details</h2>
 
-      <div className="container p-4 m-3 bg-secondary rounded">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label"><b>Name</b></label>
-            <input 
-              type="text" 
-              className="form-control form-control-sm" 
-              id="name" 
-              name="name" 
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange} 
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="story" className="form-label"><b>Story</b></label>
-            <textarea 
-              className="form-control form-control-sm" 
-              id="story" 
-              name="story" 
-              placeholder="Beneficiary's Story"
-              value={formData.story}
-              onChange={handleChange} 
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="imageUrl" className="form-label"><b>Image URL</b></label>
-            <input 
-              type="text" 
-              className="form-control form-control-sm" 
-              id="imageUrl" 
-              name="imageUrl" 
-              placeholder="Image URL"
-              value={formData.imageUrl}
-              onChange={handleChange} 
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="charity_id" className="form-label"><b>Charity</b></label>
-            <select 
-              className="form-select form-select-sm" 
-              id="charity_id" 
-              name="charity_id" 
-              value={formData.charity_id} 
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select your charity</option>
-              {charities.map((charity) => (
-                <option key={charity.id} value={charity.id}>
-                  {charity.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button type="submit" className="btn btn-dark btn-sm">Submit</button>
-          {/* Back Button */}
-          <button className="btn btn-light  float-end" onClick={() => navigate(-1)}>Go Back</button>
-        </form>
+        <div className="bg-secondary p-4 rounded-5">
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4 p-3 fs-4">
+              <label htmlFor="name" className="form-label"><b>Name</b></label>
+              <input 
+                type="text" 
+                className="form-control form-control-lg"
+                id="name" 
+                name="name" 
+                placeholder="Enter beneficiary's name"
+                value={formData.name}
+                onChange={handleChange} 
+                required
+              />
+            </div>
+            <div className="mb-4 p-3 fs-4">
+              <label htmlFor="story" className="form-label"><b>Story</b></label>
+              <textarea 
+                className="form-control form-control-lg"
+                id="story" 
+                name="story" 
+                placeholder="Enter beneficiary's story"
+                value={formData.story}
+                onChange={handleChange} 
+                required
+              />
+            </div>
+            <div className="mb-4 p-3 fs-4">
+              <label htmlFor="imageUrl" className="form-label"><b>Image URL</b></label>
+              <input 
+                type="text" 
+                className="form-control form-control-lg"
+                id="imageUrl" 
+                name="imageUrl" 
+                placeholder="Enter image URL"
+                value={formData.imageUrl}
+                onChange={handleChange} 
+                required
+              />
+            </div>
+            <div className="mb-4 p-3 fs-4">
+              <label htmlFor="charity_id" className="form-label"><b>Charity</b></label>
+              <select 
+                className="form-select form-select-lg"
+                id="charity_id" 
+                name="charity_id" 
+                value={formData.charity_id} 
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select your charity</option>
+                {charities.map((charity) => (
+                  <option key={charity.id} value={charity.id}>
+                    {charity.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <button type="submit" className="btn btn-dark btn-lg w-100 mb-3 rounded-pill">
+              Submit
+            </button>
+            <button type="button" className="btn btn-warning btn-lg w-100 rounded-pill" onClick={() => navigate(-1)}>
+              Go Back
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

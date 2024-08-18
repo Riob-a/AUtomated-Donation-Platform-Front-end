@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import "./Admin.css";
 
 function AdminApplications() {
   const [applications, setApplications] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5; // Number of applications per page
   const navigate = useNavigate(); // Initialize navigate
 
   // Fetch Applications
@@ -23,16 +25,18 @@ function AdminApplications() {
       },
       body: JSON.stringify({ status: "Approved" }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.status === "Approved") {
-          setApplications((prevApplications) =>
-            prevApplications.map((app) =>
-              app.id === id ? { ...app, status: "Approved" } : app
-            )
-          );
-          alert(data.message || "Charity approved!");
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Failed to approve charity');
         }
+      })
+      .then((data) => {
+        setApplications((prevApplications) =>
+          prevApplications.filter((app) => app.id !== id)
+        );
+        alert("Charity has been approved and moved!");
       })
       .catch((error) => console.error("Error approving application:", error));
   };
@@ -48,42 +52,44 @@ function AdminApplications() {
     })
       .then((response) => {
         if (response.ok) {
-          setApplications((prevApplications) =>
-            prevApplications.filter((app) => app.id !== id)
-          );
-          alert("Application has been rejected!");
+          return response.json();
+        } else {
+          throw new Error('Failed to reject charity');
         }
+      })
+      .then(() => {
+        setApplications((prevApplications) =>
+          prevApplications.filter((app) => app.id !== id)
+        );
+        alert("Application has been rejected!");
       })
       .catch((error) => console.error("Error rejecting application:", error));
   };
 
-  // Move applications to Charities
-  const handleMoveCharities = () => {
-    fetch("https://automated-donation-platform-back-end.onrender.com/move-unapproved-charities", {
-      method: "POST",
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error('Failed to move unapproved charities');
-        }
-      })
-      .then((data) => {
-        alert(data.message);  // Display success message
-        window.location.reload(); 
-      })
-      .catch((error) => {
-        console.error("Error moving charities:", error);
-        alert("Failed to move approved charities. Please try again.");
-      });
+  // Pagination logic
+  const indexOfLastApplication = currentPage * itemsPerPage;
+  const indexOfFirstApplication = indexOfLastApplication - itemsPerPage;
+  const currentApplications = applications.slice(indexOfFirstApplication, indexOfLastApplication);
+
+  const totalPages = Math.ceil(applications.length / itemsPerPage);
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
   };
 
   // Page content
   return (
     <div className="bg-dark p-4">
       <div>
-        <div className="row p-1 rounded">
+        <div className="row p-1 mt-5 rounded">
           <div className="col">
             <div className="header-component">
               <h1>ADMIN</h1>
@@ -97,8 +103,8 @@ function AdminApplications() {
         <h5 className="text-light bg-dark"><b>Pending</b></h5>
         <h3 className="text-light bg-dark">Applications</h3>
 
-        {applications.map((app) => (
-          <div key={app.id} className="card bg-secondary mb-3 p-4 shadow p-3 mb-5 rounded">
+        {currentApplications.map((app) => (
+          <div key={app.id} className="card bg-secondary mb-3 p-4 shadow p-3 mb-5 rounded-5">
             <div className="row g-0">
               <div className="col-md-4">
                 <img
@@ -117,7 +123,7 @@ function AdminApplications() {
                     <small className="text-body-secondary"><b>Last updated {new Date(app.date_submitted).toLocaleString()}</b></small>
                   </p>
                   <button className="btn btn-dark" onClick={() => handleApprove(app.id)}>
-                    Add to approval list
+                    Approve
                   </button>
                   <button className="btn btn-dark m-4" onClick={() => handleReject(app.id)}>
                     Reject
@@ -128,14 +134,31 @@ function AdminApplications() {
           </div>
         ))}
 
-        <button className="btn btn-secondary mt-4" onClick={handleMoveCharities}>
-          Approve Charities
-        </button>
+        {/* Pagination controls */}
+        <div className="pagination-controls mt-4">
+          <button
+            className="btn btn-warning rounded-pill"
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span className="mx-2 text-light">
+            {currentPage} of {totalPages}
+          </span>
+          <button
+            className="btn btn-warning rounded-pill"
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
 
-        {/* Back Button */}
-        <button className="btn btn-light mt-4 m-2 float-end" onClick={() => navigate(-1)}>
-          Go Back
-        </button>
+          {/* Back Button */}
+          <button className="btn btn-warning float-end rounded-pill" onClick={() => navigate(-1)}>
+            Go Back
+          </button>
+        </div>
       </div>
     </div>
   );

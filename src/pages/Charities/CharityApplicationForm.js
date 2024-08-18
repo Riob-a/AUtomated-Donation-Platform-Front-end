@@ -1,31 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CharityApplicationForm() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize navigate
   const [formData, setFormData] = useState({
     name: "",
     description: "",
     website: "",
     image_url: "",
   });
-  const [status, setStatus] = useState("");
-  const charityId = "unique_charity_id_or_email"; // Replace with actual identifier
 
-  // Fetch status of charity application on component mount
-  useEffect(() => {
-    fetch(`https://automated-donation-platform-back-end.onrender.com/unapproved-charities/${charityId}`)
-      .then(response => response.json())
-      .then(data => {
-        setStatus(data.status);
-        if (data.status === "Approved") {
-          alert(`${data.message || "Your charity has been approved!"} Charity Name: ${formData.name}`);
-        }
-      })
-      .catch(error => console.error("Error fetching charity status:", error));
-  }, [charityId, formData.name]); // Added formData.name as a dependency
-
-  // Handle form changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -61,68 +45,72 @@ function CharityApplicationForm() {
       });
   };
 
-  // Page Content
   return (
-    <div className="container p-4">
-      <div className="container p-4 m-3 bg-dark text-light text-center rounded"><h1 className="">Charity Application Form</h1></div>
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-dark text-light">
+      <div className="w-100 p-5" style={{ maxWidth: '800px' }}>
+        <h2 className="text-center mb-4">Charity Application Form</h2>
 
-      <div className="container  p-4 col-8  rounded">
-        <form className="bg-secondary  col-8 p-4 m-3 rounded" onSubmit={handleSubmit}>
-          <h3 className="text-center"><b>Add your details</b></h3>
-          <div className="col-12 mb-3">
-            <label htmlFor="name" className="form-label"><b>Name</b></label>
-            <input 
-              type="text" 
-              className="form-control form-control-sm" 
-              id="name" 
-              name="name" 
-              placeholder="Name"
-              value={formData.name}
-              onChange={handleChange} 
-            />
-          </div>
-          <div className=" col-12 mb-3">
-            <label htmlFor="description" className="form-label"><b>Description</b></label>
-            <input 
-              type="text" 
-              className="form-control form-control-sm" 
-              id="description" 
-              name="description" 
-              placeholder="Description"
-              value={formData.description}
-              onChange={handleChange} 
-            />
-          </div>
-          <div className=" col-12 mb-3">
-            <label htmlFor="website" className="form-label"><b>Website</b></label>
-            <input 
-              type="text" 
-              className="form-control form-control-sm" 
-              id="website" 
-              name="website" 
-              placeholder="Website"
-              value={formData.website}
-              onChange={handleChange} 
-            />
-          </div>
-          <div className="col-12 mb-3">
-            <label htmlFor="image_url" className="form-label"><b>Image URL</b></label>
-            <input 
-              type="text" 
-              className="form-control form-control-sm" 
-              id="image_url" 
-              name="image_url" 
-              placeholder="Image URL"
-              value={formData.image_url}
-              onChange={handleChange} 
-            />
-          </div>
-          <button type="submit" className="btn btn-dark btn-sm">Submit</button>
-        </form>
-        {/* Back Button */}
-        <button className="btn btn-light  float-end" onClick={() => navigate(-1)}>
-          Go Back
-        </button>
+        <div className="bg-secondary p-4 rounded-5">
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4 p-3 fs-4">
+              <label htmlFor="name" className="form-label"><b>Name</b></label>
+              <input 
+                type="text" 
+                className="form-control form-control-lg"
+                id="name" 
+                name="name" 
+                placeholder="Enter charity's name"
+                value={formData.name}
+                onChange={handleChange} 
+                required
+              />
+            </div>
+            <div className="mb-4 p-3 fs-4">
+              <label htmlFor="description" className="form-label"><b>Description</b></label>
+              <textarea 
+                className="form-control form-control-lg"
+                id="description" 
+                name="description" 
+                placeholder="Enter a brief description of the charity"
+                value={formData.description}
+                onChange={handleChange} 
+                required
+              />
+            </div>
+            <div className="mb-4 p-3 fs-4">
+              <label htmlFor="website" className="form-label"><b>Website</b></label>
+              <input 
+                type="text" 
+                className="form-control form-control-lg"
+                id="website" 
+                name="website" 
+                placeholder="Enter charity's website URL"
+                value={formData.website}
+                onChange={handleChange} 
+                required
+              />
+            </div>
+            <div className="mb-4 p-3 fs-4">
+              <label htmlFor="image_url" className="form-label"><b>Image URL</b></label>
+              <input 
+                type="text" 
+                className="form-control form-control-lg"
+                id="image_url" 
+                name="image_url" 
+                placeholder="Enter image URL"
+                value={formData.image_url}
+                onChange={handleChange} 
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-dark btn-lg w-100 mb-3 rounded-pill">
+              Submit
+            </button>
+            <button type="button" className="btn btn-warning btn-lg w-100 rounded-pill" onClick={() => navigate(-1)}>
+              Go Back
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );

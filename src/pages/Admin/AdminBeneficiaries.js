@@ -56,23 +56,23 @@ function AdminBeneficiaries() {
   // Page content
   return (
     <div className="bg-dark">
-      <div className="container p-4 bg-dark">
-        <div className="card text-bg-dark border-w p-3 shadow p-3 mb-5 rounded">
+      <div className="container p-4  mt-5 bg-dark">
+        <div className="card text-bg-dark border-w p-3 shadow p-3 mb-5 rounded-pill">
           <h5 className="text-light"><b>Manage</b></h5>
           <h3 className="text-light">Beneficiaries</h3>
         </div>
 
         {currentBeneficiaries.map((beneficiary) => (
-          <div key={beneficiary.id} className="card mb-3 bg-secondary  border-w p-3 shadow p-3 mb-5 rounded">
+          <div key={beneficiary.id} className="card mb-3 bg-secondary  border-w p-3 shadow p-3 mb-5 rounded-5">
             <img
               src={beneficiary.imageUrl}
-              className="card-img-top  border-w p-3 shadow p-3 mb-5 rounded"
+              className="card-img-top  bg-dark p-4 rounded-4"
               alt={beneficiary.name}
               style={{ width: "100%", height: "250px" }}
             />
             <div className="card-body ">
-              <h5 className="card-title text-light">{beneficiary.name}</h5>
-              <p className="card-text text-light">{beneficiary.story}</p>
+              <h5 className="card-title text-light fs-4">{beneficiary.name}</h5>
+              <p className="card-text text-light ">{beneficiary.story}</p>
               <p className="card-text text-light">
                 <strong>Charity:</strong> {beneficiary.charity ? beneficiary.charity.name : "N/A"}
               </p>
@@ -85,7 +85,7 @@ function AdminBeneficiaries() {
         {/* Pagination controls */}
         <div className="pagination-controls mt-4">
           <button
-            className="btn btn-secondary"
+            className="btn btn-warning rounded-pill"
             onClick={handlePrevPage}
             disabled={currentPage === 1}
           >
@@ -95,7 +95,7 @@ function AdminBeneficiaries() {
             {currentPage} of {totalPages}
           </span>
           <button
-            className="btn btn-secondary"
+            className="btn btn-warning rounded-pill"
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
           >
@@ -103,7 +103,7 @@ function AdminBeneficiaries() {
           </button>
 
           {/* Back Button */}
-          <button className="btn btn-light float-end" onClick={() => navigate(-1)}>
+          <button className="btn btn-warning float-end rounded-pill" onClick={() => navigate(-1)}>
             Go Back
           </button>
         </div>
