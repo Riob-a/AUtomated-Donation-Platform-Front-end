@@ -21,14 +21,15 @@ function Layout() {
   const location = useLocation();
   
   // Routes where Navbar and Footer should not be displayed
-  const hideNavAndFooter = location.pathname === '/' || location.pathname === '/admin_login';
+  const hideNavAndFooter = location.pathname === '/login' || location.pathname === '/admin_login';
 
   return (
     <>
       {!hideNavAndFooter && <Navbar />}
       <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginForm />} />
+        {/* <Route path="/home" element={<Home />} /> */}
         <Route path="/admin_dashboard" element={<AdminDashboard />} />
         <Route path="/admin_charities" element={<AdminCharities />} />
         <Route path="/applications" element={<AdminApplications />} />
