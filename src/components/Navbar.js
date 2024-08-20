@@ -41,7 +41,7 @@ function Navbar() {
               <a className="nav-link" href="/sign_up">Sign Up</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/" onClick={handleLogout}>Log out</a>
+              <a className="nav-link" href="/login" onClick={handleLogout}>Log out</a>
             </li>
           </ul>
         </div>
