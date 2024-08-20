@@ -15,8 +15,21 @@ function SignUpForm() {
         setFormData({ ...formData, [name]: value });
     };
 
+    const validatePassword = (password) => {
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return passwordRegex.test(password);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validatePassword(formData.password)) {
+            setAlert({
+                type: 'danger',
+                message: 'Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, one number, and one special character.'
+            });
+            return;
+        }
 
         try {
             const response = await fetch('https://automated-donation-platform-back-end.onrender.com/users/register', {
