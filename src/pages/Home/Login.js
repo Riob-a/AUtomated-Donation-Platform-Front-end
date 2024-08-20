@@ -31,7 +31,7 @@ const LoginForm = () => {
       if (response.ok) {
         setAlert({ type: 'success', message: data.message || 'Login successful!' });
         setTimeout(()=> {
-          navigate('/home');
+          navigate('/');
         }, 2000); 
       } else if (response.status === 401) {
         setAlert({ type: 'danger', message: data.msg || 'Invalid email or password!' });
